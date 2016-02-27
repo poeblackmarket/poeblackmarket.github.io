@@ -1,0 +1,40 @@
+var itemTypes = [
+    bow                             =       attributes.itemType=Bow
+    claw                            =       attributes.itemType=Claw
+    dagger                          =       attributes.itemType=Dagger
+    axe                             =       attributes.itemType=Axe
+    mace                            =       attributes.itemType=Mace
+    sword                           =       attributes.itemType=Sword
+    scep(tre)?                      =       attributes.itemType=Sceptre
+    staff                           =       attributes.itemType=Staff
+    wand                            =       attributes.itemType=Wand
+
+    (1|one)h(and)?                  =       attributes.equipType="One Handed Melee Weapon"
+    (2|two)h(and)?                  =       attributes.equipType="Two Handed Melee Weapon"
+    1haxe                           =       (`1h AND `axe)
+    1hmace                          =       (`1h AND `mace)
+    1hsword                         =       (`1h AND `sword)
+    2haxe                           =       (`2h AND `axe)
+    2hmace                          =       (`2h AND `mace)
+    2hsword                         =       (`2h AND `sword)
+
+    (chest|body)(armou?r)?          =       attributes.itemType=Body
+    boots?                          =       attributes.itemType=Boots
+    gloves?                         =       attributes.itemType=Gloves
+    helm(et)?                       =       attributes.itemType=Helmet
+    shield                          =       attributes.itemType=Shield
+                                    
+    am+(ulet|y)                     =       (attributes.itemType=Amulet AND attributes.equipType=Amulet)
+    talisman                        =       (attributes.itemType=Amulet AND attributes.equipType=Talisman)
+    belt                            =       attributes.itemType=Belt
+    cur+(en)?(cy)?                  =       attributes.itemType=Currency
+    Div(inatio)?(Card)?             =       attributes.itemType=Card
+    fish                            =       attributes.itemType=Fishing Rod
+    fla?sk                          =       attributes.itemType=Flask
+    gem                             =       attributes.itemType=Gem
+    je?we?l                         =       attributes.itemType=Jewel
+    map                             =       attributes.itemType=Map
+    quiv(er)?                       =       attributes.itemType=Quiver
+    ring                            =       attributes.itemType=Ring
+    frag                            =       attributes.itemType=Vaal Fragment
+]
