@@ -50,9 +50,9 @@ function evalSearchTerm(token) {
         if (foundMatch) {
             result = terms[regex].query;
             // apply any captured regex groups
-            result = result.replace(rgex, result);
+            result = token.replace(rgex, result);
             // escape spaces for elasticsearch
-            result = result.replace(/\s/g, '\\ ');
+            result = escapeField(result);
             if (hasOpenParen(token))  result = '(' + result;
             if (hasCloseParen(token)) result = result + ')';
             break;
@@ -77,6 +77,16 @@ function hasCloseParen(token) {
 
 function hasBackTick(token) {
     return token.indexOf('`') != -1;
+}
+
+function escapeField(result) {
+  var res = result;
+  var delimIdx = result.indexOf(':');
+  if (delimIdx != -1) {
+    var field = res.substr(0, delimIdx);
+    res = res.replace(field, field.replace(/\s/g, '\\ '));
+  }
+  return res;
 }
 
 (function() {
@@ -121,7 +131,7 @@ function hasBackTick(token) {
   
   appModule.controller('SearchController', function($scope, $http, es) {
     // Default
-    $scope.searchInput = "30sdmg";
+    $scope.searchInput = "staff 30sdmg";
     $scope.queryString = "";
     
     $scope.termsMap = {};

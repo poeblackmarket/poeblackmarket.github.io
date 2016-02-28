@@ -2,7 +2,7 @@
 # Offensive Mods
 #
 
-spelldmg|sdmg:
+(spelldmg|sdmg):
   query: _exists_:modsTotal.#% increased Spell Damage
 (\d+)(spelldmg|sdmg):
   query: modsTotal.#% increased Spell Damage:[$1 TO *]
