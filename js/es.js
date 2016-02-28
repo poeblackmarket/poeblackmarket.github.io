@@ -42,6 +42,7 @@ EsConnector.controller('ExileToolsHelloWorld', function($scope, $http, es) {
             ], 
             "query": {
                 "query_string": {
+                   "default_operator": "AND",
                    "query": searchQuery
                 }
             },
