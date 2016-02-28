@@ -13,15 +13,16 @@ EsConnector.controller('ExileToolsHelloWorld', function($scope, $http, es) {
   $scope.queryString = "";
   
   $scope.termsMap = {};
-  
-  $http.get('terms/itemtypes.yml')
-       .then(function(res){
+
+  var mergeIntoTermsMap = function(res){
           console.info(res.data);
           var ymlData = jsyaml.load(res.data);
-          $scope.termsMap = ymlData;
-          console.info($scope.termsMap);
-        });;
+          jQuery.extend($scope.termsMap, ymlData);
+        }
   
+  $http.get('terms/itemtypes.yml').then(mergeIntoTermsMap);
+  $http.get('terms/gems.yml').then(mergeIntoTermsMap);
+
   $scope.doSearch = function() {
           $scope.Response = null;
           console.log(terms);
