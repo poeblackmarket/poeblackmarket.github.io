@@ -65,3 +65,15 @@ This will build a demo version (uploaded to github) once with minified/uglified 
 ```bash
 gulp build --production --demo
 ```
+
+--
+
+Got this one my `.bashrc`
+
+```
+function gita() {
+    git add .
+    git commit -a -m "$1"
+    git push origin master
+}
+```
