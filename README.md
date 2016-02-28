@@ -53,3 +53,9 @@ To run the compiling process once, without watching any files, use the `build` c
 ```bash
 npm start build
 ```
+
+```bash
+gulp build --production
+```
+
+This will build your project once with minified/uglified JS.
