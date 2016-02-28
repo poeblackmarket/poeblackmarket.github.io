@@ -14,6 +14,8 @@ var sequence = require('run-sequence');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
+// Check for --demo flag
+var isDemo = !!(argv.demo);
 
 // 2. FILE PATHS
 // - - - - - - - - - - - - - - -
@@ -56,31 +58,36 @@ var paths = {
 
 // Cleans the build directory
 gulp.task('clean', function(cb) {
-  rimraf('./build', cb);
+  var destination = (isDemo ? './demo' : './build' );	
+  rimraf(destination, cb);
 });
 
 // Copies everything in the client folder except templates, Sass, and JS
 gulp.task('copy', function() {
+  var destination = (isDemo ? './demo' : './build' );	
   return gulp.src(paths.assets, {
     base: './client/'
   })
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(destination))
   ;
 });
 
 // Copies your app's page templates and generates URLs for them
 gulp.task('copy:templates', function() {
+  var destination = (isDemo ? './demo' : './build' );
   return gulp.src('./client/templates/**/*.html')
     .pipe(router({
       path: 'build/assets/js/routes.js',
       root: 'client'
     }))
-    .pipe(gulp.dest('./build/templates'))
+    .pipe(gulp.dest(destination + '/templates'))
   ;
 });
 
 // Compiles the Foundation for Apps directive partials into a single JavaScript file
-gulp.task('copy:foundation', function(cb) {
+gulp.task('copy:foundation', function(cb) {  
+  var destination = (isDemo ? './demo' : './build' );	
+  
   gulp.src('bower_components/foundation-apps/js/angular/components/**/*.html')
     .pipe($.ngHtml2js({
       prefix: 'components/',
@@ -89,12 +96,12 @@ gulp.task('copy:foundation', function(cb) {
     }))
     .pipe($.uglify())
     .pipe($.concat('templates.js'))
-    .pipe(gulp.dest('./build/assets/js'))
+    .pipe(gulp.dest(destination + '/assets/js'))
   ;
 
   // Iconic SVG icons
   gulp.src('./bower_components/foundation-apps/iconic/**/*')
-    .pipe(gulp.dest('./build/assets/img/iconic/'))
+    .pipe(gulp.dest(destination + '/assets/img/iconic/'))
   ;
 
   cb();
@@ -103,6 +110,7 @@ gulp.task('copy:foundation', function(cb) {
 // Compiles Sass
 gulp.task('sass', function () {
   var minifyCss = $.if(isProduction, $.minifyCss());
+  var destination = (isDemo ? './demo' : './build' );
 
   return gulp.src('client/assets/scss/app.scss')
     .pipe($.sass({
@@ -114,7 +122,7 @@ gulp.task('sass', function () {
       browsers: ['last 2 versions', 'ie 10']
     }))
     .pipe(minifyCss)
-    .pipe(gulp.dest('./build/assets/css/'))
+	.pipe(gulp.dest(destination + '/assets/css/'))
   ;
 });
 
@@ -122,7 +130,7 @@ gulp.task('sass', function () {
 gulp.task('uglify', ['uglify:foundation', 'uglify:app'])
 
 gulp.task('uglify:foundation', function(cb) {
-  
+  var destination = (isDemo ? './demo' : './build' );
   var uglify = $.if(isProduction, $.uglify()
     .on('error', function (e) {
       console.log(e);
@@ -131,11 +139,12 @@ gulp.task('uglify:foundation', function(cb) {
   return gulp.src(paths.foundationJS)
     .pipe(uglify)
     .pipe($.concat('foundation.js'))
-    .pipe(gulp.dest('./build/assets/js/'))
+    .pipe(gulp.dest(destination + '/assets/js/'))
   ;
 });
 
 gulp.task('uglify:app', function() {
+  var destination = (isDemo ? './demo' : './build' );	
   var uglify = $.if(isProduction, $.uglify()
     .on('error', function (e) {
       console.log(e);
@@ -144,7 +153,7 @@ gulp.task('uglify:app', function() {
   return gulp.src(paths.appJS)
     .pipe(uglify)
     .pipe($.concat('app.js'))
-    .pipe(gulp.dest('./build/assets/js/'))
+    .pipe(gulp.dest(destination + '/assets/js/'))
   ;
 });
 
