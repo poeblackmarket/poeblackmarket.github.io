@@ -49,6 +49,10 @@ function evalSearchTerm(token) {
         var foundMatch = rgex.test(removeParensAndBackTick(token));
         if (foundMatch) {
             result = terms[regex].query;
+            // apply any captured regex groups
+            result = result.replace(rgex, result);
+            // escape spaces for elasticsearch
+            result = result.replace(/\s/g, '\\ ');
             if (hasOpenParen(token))  result = '(' + result;
             if (hasCloseParen(token)) result = result + ')';
             break;
@@ -117,19 +121,20 @@ function hasBackTick(token) {
   
   appModule.controller('SearchController', function($scope, $http, es) {
     // Default
-    $scope.searchInput = "2haxe";
+    $scope.searchInput = "30sdmg";
     $scope.queryString = "";
     
     $scope.termsMap = {};
     
     var mergeIntoTermsMap = function(res){
-            console.info(res.data);
             var ymlData = jsyaml.load(res.data);
             jQuery.extend($scope.termsMap, ymlData);
           }
     
     $http.get('assets/terms/itemtypes.yml').then(mergeIntoTermsMap);
     $http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
+    $http.get('assets/terms/mod-ofs.yml').then(mergeIntoTermsMap); 
+    $http.get('assets/terms/buyouts.yml').then(mergeIntoTermsMap); 
     
     $scope.doSearch = function() {
         $scope.Response = null;

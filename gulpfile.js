@@ -50,6 +50,7 @@ var paths = {
   // These files are for your app's JavaScript
   appJS: [
     'client/assets/js/app.js'
+    // 'client/assets/js/blackmarket.js' merged into app.js, as this messes up my workflow with chrome dev tools
   ]
 }
 
