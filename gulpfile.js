@@ -40,7 +40,10 @@ var paths = {
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/foundation-apps/js/vendor/**/*.js',
     'bower_components/foundation-apps/js/angular/**/*.js',
-    '!bower_components/foundation-apps/js/angular/app.js'
+    '!bower_components/foundation-apps/js/angular/app.js',	
+	'bower_components/jquery/dist/jquery.js',
+	'bower_components/elasticsearch/elasticsearch.angular.js',
+	'node_modules/js-yaml/dist/js-yaml.js',
   ],
   // These files are for your app's JavaScript
   appJS: [
@@ -119,6 +122,7 @@ gulp.task('sass', function () {
 gulp.task('uglify', ['uglify:foundation', 'uglify:app'])
 
 gulp.task('uglify:foundation', function(cb) {
+  
   var uglify = $.if(isProduction, $.uglify()
     .on('error', function (e) {
       console.log(e);

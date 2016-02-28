@@ -23,6 +23,8 @@
     "tests"
   ],
   "dependencies": {
-    "foundation-apps": "~1.2.0"
+    "foundation-apps": "~1.2.0",
+    "jquery": "^2.2.1",
+    "elasticsearch": "^10.1.3"
   }
 }
