@@ -60,4 +60,8 @@ This will build your project once with minified/uglified JS:
 gulp build --production
 ```
 
+This will build a demo version (uploaded to github) once with minified/uglified JS:
 
+```bash
+gulp build --production --demo
+```
