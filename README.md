@@ -1,13 +1,6 @@
 [![Join the chat at https://gitter.im/poeblackmarket/poeblackmarket.github.io](https://badges.gitter.im/poeblackmarket/poeblackmarket.github.io.svg)](https://gitter.im/poeblackmarket/poeblackmarket.github.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Path of Exile Blackmarket - An Advance Search Engine
 
-# Foundation for Apps Template
-
-[![devDependency Status](https://david-dm.org/zurb/foundation-apps-template/dev-status.svg)](https://david-dm.org/zurb/foundation-apps-template#info=devDependencies)
-
-This is the default template project for Foundation for Apps, powered by Gulp, Angular, and libsass. It provides you with a basic template to get started with Foundation for Apps and Angular.
-
-If you're already an Angular developer, you may instead want to install the components into your own stack using Bower: `bower install foundation-apps`
+# Path of Exile Blackmarket - An Advance Search Engine
 
 ## Requirements
 
@@ -21,10 +14,10 @@ You'll need the following software installed to get started.
 
 ## Get Started
 
-Clone this repository, where `app` is the name of your app.
+Clone this repository using git.
 
 ```bash
-git clone https://github.com/zurb/foundation-apps-template.git app
+git clone https://github.com/poeblackmarket/poeblackmarket.github.io.git
 ```
 
 Change into the directory.
@@ -66,11 +59,11 @@ This will build a demo version (uploaded to github) once with minified/uglified 
 gulp build --production --demo
 ```
 
---
+## Dev Notes
 
-Got this one my `.bashrc`
+Got this one my `.bashrc`. This will do git add/commit/push in one command.
 
-```
+```bash
 function gita() {
     git add .
     git commit -a -m "$1"
