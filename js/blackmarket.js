@@ -1,29 +1,12 @@
 
-// Load Terms Map
 var terms = {};
-$.ajax({
-    url:'terms/itemtypes.txt',
-    success: function (data){
-      //parse your data here
-      //you can split into lines using data.split('\n') 
-      //an use regex functions to effectively parse it
-      var lines = data.split('\n');
-      for(i in lines) {
-          var line = lines[i];
-          if(line.trim().length > 0 && !line.startsWith(';')) {
-              var lastEqualsIdx = line.indexOf("=");
-              var regex = line.substring(0, lastEqualsIdx).trim();
-              terms[regex] = line.substring(lastEqualsIdx + 1).trim();
-          }
-      }
-    }
-});
-
-
-function parseSearchInput(input) {
+function parseSearchInput(_terms, input) {
+    terms = _terms;
+    
     // capture literal search terms (LST) like name="veil of the night"
-    /*var regex = /([^\\s]*=\".*?\")/g;
+    var regex = /([^\s]*=\".*?\")/g;
     var lsts = input.match(regex);
+    lsts = expandLsts(lsts);
     var _input = input.replace(regex, 'LST');
     var queryStr = parseSearchInputTokens(_input);
     var i = 0;
@@ -32,8 +15,12 @@ function parseSearchInput(input) {
         i++;
         return lst;
     });
-    return _queryStr;*/
+    return _queryStr;
     return parseSearchInputTokens(input);
+}
+
+function expandLsts(lsts) {
+    return lsts;
 }
 
 function parseSearchInputTokens(input) {
@@ -45,7 +32,7 @@ function parseSearchInputTokens(input) {
         if ( token != "OR" && token != "AND" && token !="LST" ) {
             evaluatedToken = evalSearchTerm(token);
             if (evaluatedToken && hasBackTick(evaluatedToken)) {
-                evaluatedToken = parseSearchInput(evaluatedToken);
+                evaluatedToken = parseSearchInputTokens(evaluatedToken);
             }
         }
         queryTokens.push(evaluatedToken);
@@ -61,7 +48,7 @@ function evalSearchTerm(token) {
         var rgex = new RegExp('^' + regex + '$', 'i');
         var foundMatch = rgex.test(removeParensAndBackTick(token));
         if (foundMatch) {
-            result = terms[regex];
+            result = terms[regex].query;
             if (hasOpenParen(token))  result = '(' + result;
             if (hasCloseParen(token)) result = result + ')';
             break;

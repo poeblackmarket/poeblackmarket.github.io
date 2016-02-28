@@ -1,0 +1,8 @@
+# Item Types
+# ` denotes a search term and should be expended
+2haxe:
+  query: (`2h AND `axe)
+(2|two)h(and)?:
+  query: attributes.equipType="Two Handed Melee Weapon"
+axe:
+  query: attributes.itemType=Axe

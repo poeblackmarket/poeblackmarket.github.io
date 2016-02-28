@@ -7,15 +7,25 @@ EsConnector.service('es', function (esFactory) {
 });
 
 
-EsConnector.controller('ExileToolsHelloWorld', function($scope, es) {
+EsConnector.controller('ExileToolsHelloWorld', function($scope, $http, es) {
   // Default
   $scope.searchInput = "2haxe";
   $scope.queryString = "";
-  // attributes.baseItemType:Armour AND shop.updated:>1456191110199
+  
+  $scope.termsMap = {};
+  
+  $http.get('terms/itemtypes.yml')
+       .then(function(res){
+          console.info(res.data);
+          var ymlData = jsyaml.load(res.data);
+          $scope.termsMap = ymlData;
+          console.info($scope.termsMap);
+        });;
+  
   $scope.doSearch = function() {
           $scope.Response = null;
           console.log(terms);
-          var searchQuery = parseSearchInput($scope.searchInput);
+          var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
           console.log("searchQuery=" + searchQuery);
           $scope.queryString = searchQuery;
           
