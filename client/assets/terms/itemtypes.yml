@@ -10,16 +10,22 @@ claw:
   query: attributes.itemType:Claw
 dagger:
   query: attributes.itemType:Dagger
-axe|1haxe:
+axe:
   query: attributes.itemType:Axe
-mace|1hmace:
+mace:
   query: attributes.itemType:Mace
-sword|1hsword:
+sword:
   query: attributes.itemType:Sword
 scep(tre)?:
   query: attributes.itemType:Sceptre
 staff:
   query: attributes.itemType:Staff
+1haxe:
+  query: (`1h `axe)
+1hmace:
+  query: (`1h `mace)
+1hsword:
+  query: (`1h `sword)
 2haxe:
   query: (`2h `axe)
 2hmace:
