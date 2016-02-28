@@ -1,20 +1,32 @@
 
-<div class="grid-container">
-    <div id="main" style="width:100%;padding-left:50px;padding-right:50px" ng-controller="SearchController" >
-      <input ng-model="searchInput" my-enter="doSearch()" size="150" type="text"></input>
-      <input ng-click="doSearch()" type="button" value="Search"/>
-      <hr width=100% size=1>
-
-      <div>
-        <li>Request took {{Response.took}} ms
-        <li>Request matched {{Response.hits.total}} hits
-        <li>Query String: {{queryString}}
-
-        <ul>
-          <li ng-repeat="item in Response.hits.hits">
-            {{item._source.info.fullName}},<img ng-src="{{item._source.info.icon}}" />
-          </li>
-        </ul>
-      </div>
-    </div>
+<div id="main" class="grid-container" ng-controller="SearchController" >
+	
+	<div class="grid-content"> 
+		<div zf-panel="" id="panelName">
+			<a zf-close="" class="button">Close Panel</a>
+			
+				<label>Search Input</input>
+				<input ng-model="searchInput" my-enter="doSearch()" size="150" type="text"></input>
+				<a href="#" ng-click="doSearch()" class="button" value="Search"/>Search</a>
+				<hr width=100% size=1>			
+		</div>
+	</div>
+	
+	<div class="grid-content">
+		<a href="#" zf-toggle="panelName" class="button">Show Search</a>
+		
+		<ul>
+			<li>Request took {{Response.took}} ms
+			<li>Request matched {{Response.hits.total}} hits
+			<li>Query String: {{queryString}}
+		</ul>
+		
+		<div class="grid-block">
+			<div class="grid-block result-item-box" ng-repeat="item in Response.hits.hits">
+				<span>{{item._source.info.fullName}}</span>
+				<img ng-src="{{item._source.info.icon}}" />
+			</div>
+		</div>
+	</div>
+	
 </div>
