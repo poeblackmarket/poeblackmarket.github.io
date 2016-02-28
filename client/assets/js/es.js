@@ -22,7 +22,7 @@ EsConnector.controller('ExileToolsHelloWorld', function($scope, $http, es) {
   
   $http.get('terms/itemtypes.yml').then(mergeIntoTermsMap);
   $http.get('terms/gems.yml').then(mergeIntoTermsMap);
-
+  $http.get('terms/buyouts.yml').then(mergeIntoTermsMap);
   $scope.doSearch = function() {
           $scope.Response = null;
           console.log(terms);
