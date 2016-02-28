@@ -75,9 +75,10 @@ gulp.task('copy', function() {
 // Copies your app's page templates and generates URLs for them
 gulp.task('copy:templates', function() {
   var destination = (isDemo ? './demo' : './build' );
+  var routerPath = (isDemo ? 'demo' : 'build' );
   return gulp.src('./client/templates/**/*.html')
     .pipe(router({
-      path: 'build/assets/js/routes.js',
+      path: routerPath + '/assets/js/routes.js',
       root: 'client'
     }))
     .pipe(gulp.dest(destination + '/templates'))
