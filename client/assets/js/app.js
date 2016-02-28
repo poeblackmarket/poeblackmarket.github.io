@@ -129,7 +129,7 @@ function escapeField(result) {
   });
   
   
-  appModule.controller('SearchController', function($scope, $http, es) {
+  appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
     // Default
     $scope.searchInput = "staff 30sdmg";
     $scope.queryString = "";
@@ -186,7 +186,7 @@ function escapeField(result) {
           console.trace(err.message);
         });
       }
-    });
+    }]);
 
     // Custom Directive
     appModule.directive('myEnter', function () {
