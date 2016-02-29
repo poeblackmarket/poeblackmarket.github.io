@@ -1,4 +1,4 @@
 # Vaal Mods
 
 (addarrow|\+1arrow|plus(1|one)arrow):
-  query: mods.Bow.implicit.Adds an additional Arrow:true
+  query: mods.\*.implicit.Adds an additional Arrow:true
