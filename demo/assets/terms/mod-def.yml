@@ -1,0 +1,80 @@
+#
+# Defensive Mods
+#
+
+chaosres|chres|chares:
+  query: _exists_:modsPseudo.+#% Total to Chaos Resistance
+(\d+)chaosres|chres|chares:
+  query: modsPseudo.+#% Total to Chaos Resistance:[$1 TO *]
+(\d+)-(\d+)chaosres|chres|chares:
+  query: modsPseudo.+#% Total to Chaos Resistance:[$1 TO $2]
+
+coldres:
+  query: _exists_:modsPseudo.+#% Total to Cold Resistance
+(\d+)coldres:
+  query: modsPseudo.+#% Total to Cold Resistance:[$1 TO *]
+(\d+)-(\d+)coldres:
+  query: modsPseudo.+#% Total to Cold Resistance:[$1 TO $2]
+
+eleres:
+  query: _exists_:modsPseudo.+#% Total to Elemental Resistances
+(\d+)eleres:
+  query: modsPseudo.+#% Total to Elemental Resistances:[$1 TO *]
+(\d+)-(\d+)eleres:
+  query: modsPseudo.+#% Total to Elemental Resistances:[$1 TO $2]
+
+fireres:
+  query: _exists_:modsPseudo.+#% Total to Fire Resistance
+(\d+)fireres:
+  query: modsPseudo.+#% Total to Fire Resistance:[$1 TO *]
+(\d+)-(\d+)fireres:
+  query: modsPseudo.+#% Total to Fire Resistance:[$1 TO $2]
+
+lightres:
+  query: _exists_:modsPseudo.+#% Total to Lightning Resistance
+(\d+)lightres:
+  query: modsPseudo.+#% Total to Lightning Resistance:[$1 TO *]
+(\d+)-(\d+)lightres:
+  query: modsPseudo.+#% Total to Lightning Resistance:[$1 TO $2]  
+  
+int:
+  query: _exists_:modsPseudo.+# Total to Intelligence
+(\d+)int:
+  query: modsPseudo.+# Total to Intelligence:[$1 TO *]
+(\d+)-(\d+)int:
+  query: modsPseudo.+# Total to Intelligence:[$1 TO $2]
+
+life:
+  query: _exists_:modsPseudo.+# Total to maximum Life
+(\d+)life:
+  query: modsPseudo.+# Total to maximum Life:[$1 TO *]
+(\d+)-(\d+)life:
+  query: modsPseudo.+# Total to maximum Life:[$1 TO $2]
+
+Tot(al)?res:
+  query: _exists_:modsPseudo.+#% Total to Resistances
+(\d+)Tot(al)?res:
+  query: modsPseudo.+#% Total to Resistances:[$1 TO *]
+(\d+)-(\d+)Tot(al)?res:
+  query: modsPseudo.+#% Total to Resistances:[$1 TO $2]
+
+str:
+  query: _exists_:modsPseudo.+# Total to Strength
+(\d+)str:
+  query: modsPseudo.+# Total to Strength:[$1 TO *]
+(\d+)-(\d+)str:
+  query: modsPseudo.+# Total to Strength:[$1 TO $2]
+  
+dex:
+  query: _exists_:modsPseudo.+# Total to Dexterity
+(\d+)dex:
+  query: modsPseudo.+# Total to Dexterity:[$1 TO *]
+(\d+)-(\d+)dex:
+  query: modsPseudo.+# Total to Dexterity:[$1 TO $2]
+
+allatri|atri :
+  query: _exists_:modsPseudo.+# Total to Attributes
+(\d+)allatri|atri :
+  query: modsPseudo.+# Total to Attributes:[$1 TO *]
+(\d+)-(\d+)allatri|atri :
+  query: modsPseudo.+# Total to Attributes:[$1 TO $2]

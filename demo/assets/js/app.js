@@ -1,1 +1,205 @@
-function parseSearchInput(e,r){terms=e;var n=/([^\s]*=\".*?\")/g,t=r.match(n);t=expandLsts(t);var a=r.replace(n,"LST"),s=parseSearchInputTokens(a),o=0,i=s.replace("LST",function(e){var r=t[o];return o++,r});return i}function expandLsts(e){return e}function parseSearchInputTokens(e){var r=e.split(" "),n=[];for(i in r){var t=r[i],a=t;"OR"!=t&&"AND"!=t&&"LST"!=t&&(a=evalSearchTerm(t),a&&hasBackTick(a)&&(a=parseSearchInputTokens(a))),n.push(a)}var s=n.join(" ");return s}function evalSearchTerm(e){var r="";for(regex in terms)if(terms.hasOwnProperty(regex)){var n=new RegExp("^"+regex+"$","i"),t=n.test(removeParensAndBackTick(e));if(t){r=terms[regex].query,r=e.replace(n,r),r=escapeField(r),hasOpenParen(e)&&(r="("+r),hasCloseParen(e)&&(r+=")");break}}return r}function removeParensAndBackTick(e){var r=e.replace(/[\(\)`]/g,"");return r}function hasOpenParen(e){return e.startsWith("(")}function hasCloseParen(e){return e.endsWith(")")}function hasBackTick(e){return-1!=e.indexOf("`")}function escapeField(e){var r=e,n=e.indexOf(":");if(-1!=n){var t=r.substr(0,n);r=r.replace(t,t.replace(/\s/g,"\\ "))}return r}var terms={};!function(){"use strict";function e(e,r){e.otherwise("/"),r.html5Mode({enabled:!1,requireBase:!1}),r.hashPrefix("!")}function r(){FastClick.attach(document.body)}var n=angular.module("application",["elasticsearch","ui.router","ngAnimate","foundation","foundation.dynamicRouting","foundation.dynamicRouting.animations"]);n.config(e),n.run(r),e.$inject=["$urlRouterProvider","$locationProvider"],n.service("es",function(e){return e({host:"http://apikey:DEVELOPMENT-Indexer@api.exiletools.com"})}),n.controller("SearchController",["$scope","$http","es",function(e,r,n){e.searchInput="staff 30sdmg",e.queryString="",e.termsMap={};var t=function(r){var n=jsyaml.load(r.data);jQuery.extend(e.termsMap,n)};r.get("assets/terms/itemtypes.yml").then(t),r.get("assets/terms/gems.yml").then(t),r.get("assets/terms/mod-ofs.yml").then(t),r.get("assets/terms/buyouts.yml").then(t),e.doSearch=function(){e.Response=null;var r=parseSearchInput(e.termsMap,e.searchInput);console.log("searchQuery="+r),e.queryString=r,n.search({index:"index",body:{sort:[{"shop.updated":{order:"desc"}}],query:{query_string:{default_operator:"AND",query:r}},size:100}}).then(function(r){e.Response=r},function(e){console.trace(e.message)})}}]),n.directive("myEnter",function(){return function(e,r,n){r.bind("keydown keypress",function(r){13===r.which&&(e.$apply(function(){e.$eval(n.myEnter)}),r.preventDefault())})}})}();
+
+var terms = {};
+function parseSearchInput(_terms, input) {
+    terms = _terms;
+    
+    // capture literal search terms (LST) like name="veil of the night"
+    var regex = /([^\s]*=\".*?\")/g;
+    var lsts = input.match(regex);
+    lsts = expandLsts(lsts);
+    var _input = input.replace(regex, 'LST');
+    var queryStr = parseSearchInputTokens(_input);
+    var i = 0;
+    var _queryStr = queryStr.replace('LST', function (match) {
+        var lst = lsts[i];
+        i++;
+        return lst;
+    });
+    return _queryStr;
+    return parseSearchInputTokens(input);
+}
+
+function expandLsts(lsts) {
+    return lsts;
+}
+
+function parseSearchInputTokens(input) {
+    var tokens = input.split(" ");
+    var queryTokens = [];
+    for (i in tokens) {
+        var token = tokens[i];
+        var evaluatedToken = token;
+        if ( token != "OR" && token != "AND" && token !="LST" ) {
+            evaluatedToken = evalSearchTerm(token);
+            if (evaluatedToken && hasBackTick(evaluatedToken)) {
+                evaluatedToken = parseSearchInputTokens(evaluatedToken);
+            }
+        }
+        queryTokens.push(evaluatedToken);
+    }
+    var queryString = queryTokens.join(" ");
+    return queryString;
+}
+
+function evalSearchTerm(token) {
+    var result = "";
+    for (regex in terms) {
+       if (terms.hasOwnProperty(regex)) {
+        var rgex = new RegExp('^' + regex + '$', 'i');
+        var foundMatch = rgex.test(removeParensAndBackTick(token));
+        if (foundMatch) {
+            result = terms[regex].query;
+            // apply any captured regex groups
+            result = token.replace(rgex, result);
+            // escape spaces for elasticsearch
+            result = escapeField(result);
+            if (hasOpenParen(token))  result = '(' + result;
+            if (hasCloseParen(token)) result = result + ')';
+            break;
+        }
+      }
+    }
+    return result;
+}
+
+function removeParensAndBackTick(token) {
+    var _token = token.replace(/[\(\)`]/g, "");
+    return _token;
+}
+
+function hasOpenParen(token) {
+    return token.startsWith('(');
+}
+
+function hasCloseParen(token) {
+    return token.endsWith(')');
+}
+
+function hasBackTick(token) {
+    return token.indexOf('`') != -1;
+}
+
+function escapeField(result) {
+  var res = result;
+  var delimIdx = result.indexOf(':');
+  if (delimIdx != -1) {
+    var field = res.substr(0, delimIdx);
+    res = res.replace(field, field.replace(/\s/g, '\\ '));
+  }
+  return res;
+}
+
+(function() {
+  'use strict';
+
+  var appModule = angular.module('application', [
+    'elasticsearch',
+    'ui.router',
+    'ngAnimate',
+
+    //foundation
+    'foundation',
+    'foundation.dynamicRouting',
+    'foundation.dynamicRouting.animations'
+  ]);
+  
+  appModule.config(config);
+  appModule.run(run);
+  
+  config.$inject = ['$urlRouterProvider', '$locationProvider'];
+
+  function config($urlProvider, $locationProvider) {
+    $urlProvider.otherwise('/');
+
+    $locationProvider.html5Mode({
+      enabled:false,
+      requireBase: false
+    });
+
+    $locationProvider.hashPrefix('!');
+  }
+
+  function run() {
+    FastClick.attach(document.body);
+  }
+
+  // Create the es service from the esFactory
+  appModule.service('es', function (esFactory) {
+    return esFactory({ host: 'http://apikey:DEVELOPMENT-Indexer@api.exiletools.com' });
+  });
+  
+  
+  appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
+    // Default
+    $scope.searchInput = "staff 30sdmg";
+    $scope.queryString = "";
+    
+    $scope.termsMap = {};
+    
+    var mergeIntoTermsMap = function(res){
+            var ymlData = jsyaml.load(res.data);
+            jQuery.extend($scope.termsMap, ymlData);
+          }
+    
+    $http.get('assets/terms/itemtypes.yml').then(mergeIntoTermsMap);
+    $http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
+    $http.get('assets/terms/mod-ofs.yml').then(mergeIntoTermsMap); 
+    $http.get('assets/terms/mod-def.yml').then(mergeIntoTermsMap); 
+    
+    $scope.doSearch = function() {
+        $scope.Response = null;
+        var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
+        console.log("searchQuery=" + searchQuery);
+        $scope.queryString = searchQuery;
+        
+        es.search({
+        index: 'index',
+        body: {
+          "sort": [
+            {
+              "shop.updated": {
+                "order": "desc"
+              }
+            }
+          ], 
+          "query": {
+              "query_string": {
+                 "default_operator": "AND",
+                 "query": searchQuery
+              }
+          },
+          // Is this faster?
+          /*"query": {
+            "filtered": {
+              "query": {
+                  "query_string": {
+                     "query": $scope.searchInput
+                  }
+              }
+            }
+          },*/
+          size:100
+        }
+        }).then(function (response) {
+          $scope.Response = response;
+        }, function (err) {
+          console.trace(err.message);
+        });
+      }
+    }]);
+
+    // Custom Directive
+    appModule.directive('myEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.myEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+})();
