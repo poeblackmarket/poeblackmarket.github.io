@@ -46,11 +46,12 @@ function evalSearchTerm(token) {
     for (regex in terms) {
        if (terms.hasOwnProperty(regex)) {
         var rgex = new RegExp('^' + regex + '$', 'i');
-        var foundMatch = rgex.test(removeParensAndBackTick(token));
+        var cleanToken = removeParensAndBackTick(token);
+        var foundMatch = rgex.test(cleanToken);
         if (foundMatch) {
             result = terms[regex].query;
             // apply any captured regex groups
-            result = token.replace(rgex, result);
+            result = cleanToken.replace(rgex, result);
             // escape spaces for elasticsearch
             result = escapeField(result);
             if (hasOpenParen(token))  result = '(' + result;
@@ -131,7 +132,7 @@ function escapeField(result) {
   
   appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
     // Default
-    $scope.searchInput = "staff 30sdmg pure";
+    $scope.searchInput = "3s2l";
     $scope.queryString = "";
     
     $scope.termsMap = {};
