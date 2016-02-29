@@ -126,7 +126,7 @@ function escapeField(result) {
 
   // Create the es service from the esFactory
   appModule.service('es', function (esFactory) {
-    return esFactory({ host: 'http://apikey:DEVELOPMENT-Indexer@api.exiletools.com' });
+    return esFactory({ host: 'http://apikey:07e669ae1b2a4f517d68068a8e24cfe4@api.exiletools.com' }); // poeblackmarketweb@gmail.com
   });
   
   
@@ -191,6 +191,9 @@ function escapeField(result) {
         });
       }
     }]);
+
+    // Custom filters
+    // appModule.filter("prettyJSON", () => json => JSON.stringify(json, null, " "))
 
     // Custom Directive
     appModule.directive('myEnter', function () {
