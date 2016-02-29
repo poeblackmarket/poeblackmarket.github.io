@@ -144,7 +144,7 @@ function escapeField(result) {
     $http.get('assets/terms/itemtypes.yml').then(mergeIntoTermsMap);
     $http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
     $http.get('assets/terms/mod-ofs.yml').then(mergeIntoTermsMap); 
-    $http.get('assets/terms/buyouts.yml').then(mergeIntoTermsMap); 
+    $http.get('assets/terms/mod-def.yml').then(mergeIntoTermsMap); 
     
     $scope.doSearch = function() {
         $scope.Response = null;
