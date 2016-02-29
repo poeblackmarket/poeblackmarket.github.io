@@ -6,25 +6,26 @@
 			<a zf-close="" class="button">Close Panel</a>
 		-->	
 				<label>Search Input</label>
-				<input ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
+				<input ng-model="searchInput" my-enter="doSearch()" size="10" type="text">
 				<a href="#" ng-click="doSearch()" class="button" value="Search"/>Search</a>
-				<hr width=100% size=1>			
+				<span style="font-size:12px;">
+					<span>Request took {{Response.took}} ms --- </span>
+					<span>Request matched {{Response.hits.total}} hits --- </span>
+					<span>Query String: {{queryString}}</span>
+				</span>
+				<!--hr width=100% size=1-->			
 		<!--/div-->
 	</div>
 	
 	<div class="grid-content">
 		<!--a href="#" zf-toggle="panelName" class="button">Show Search</a-->
 		
-		<ul>
-			<li>Request took {{Response.took}} ms
-			<li>Request matched {{Response.hits.total}} hits
-			<li>Query String: {{queryString}}
-		</ul>
 		
 		<div class="grid-block">
 			<div class="grid-block result-item-box" ng-repeat="item in Response.hits.hits">
-				<span>{{item._source.info.fullName}}</span>
-				<img ng-src="{{item._source.info.icon}}" />
+				<textarea rows=25 cols=100 style="font-size:14px; background-image: url({{item._source.info.icon}}); background-repeat: no-repeat; background-position: center;">
+					{{item._source | json}}
+				</textarea>
 			</div>
 		</div>
 	</div>
