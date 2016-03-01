@@ -2,7 +2,6 @@
 
 (addarrow|\+1arrow|plus(1|one)arrow):
   query: mods.\*.implicit.Adds an additional Arrow:true
-  
 
 mfc:
   query: modsTotal.+# Maximum Frenzy Charge:>0
@@ -32,7 +31,7 @@ addcurse:
 (\d+)-(\d+)addcurse:
   query: modsTotal.Enemies can have # additional Curse:[$1 TO $2] 
 
- spellblockchance|sbc:
+spellblockchance|sbc:
   query: modsTotal.#% Chance to Block Spells:>0
 (\d+)spellblockchance|sbc:
   query: modsTotal.#% Chance to Block Spells:>$1
