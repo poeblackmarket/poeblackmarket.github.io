@@ -82,11 +82,12 @@ function hasBackTick(token) {
 
 function escapeField(result) {
 	var res = result;
-	var delimIdx = result.indexOf(':');
-	if (delimIdx != -1) {
-		var field = res.substr(0, delimIdx);
-		res = res.replace(field, field.replace(/\s/g, '\\ '));
-	}
+	//var delimIdx = result.indexOf(':');
+	//if (delimIdx != -1) {
+	//	var field = res.substr(0, delimIdx);
+	//	res = res.replace(field, field.replace(/\s/g, '\\ '));
+	//}
+	res.replace(/\s/g,'\\ ');
 	return res;
 }
 
@@ -149,7 +150,7 @@ function escapeField(result) {
 		$http.get('assets/terms/attributes.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/sockets.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/buyout.yml').then(mergeIntoTermsMap);
-
+		$http.get('assets/terms/uniques.yml').then(mergeIntoTermsMap);
 		$scope.doSearch = function() {
 			$scope.Response = null;
 			var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
