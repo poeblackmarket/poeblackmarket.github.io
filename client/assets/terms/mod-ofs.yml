@@ -197,7 +197,7 @@ totallightspelldmg|tlsdmg:
 
 ph(ys)?lifeleech|pll:
   query: modsTotal.#% of Physical Attack Damage Leeched as Life:>0
-(\d+\.\d+)(ph(ys)?lifeleech|pll::
+(\d+\.\d+)(ph(ys)?lifeleech|pll):
   query: modsTotal.#% of Physical Attack Damage Leeched as Life:[$1 TO *]
 (\d+\.\d+)-(\d+\.\d+)(ph(ys)?lifeleech|pll:):
   query: modsTotal.#% of Physical Attack Damage Leeched as Life:[$1 TO $2]
