@@ -1,0 +1,11 @@
+#
+# Leagues
+#
+standard|sc:
+  query: attribute.league:Standard
+hardcore|hc:
+  query: attribute.league:Hardcore
+t(e?mp)?(st(andar)?d|sc):
+  query: attribute.league:Talisman
+t(e?mp)?(hardcore|hc):
+  query: attribute.league:Hardcore Talisman

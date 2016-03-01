@@ -152,6 +152,7 @@ function escapeField(result) {
 		$http.get('assets/terms/uniques.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/basetypes.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/currencies.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/leagues.yml').then(mergeIntoTermsMap);
 		
 		$scope.doSearch = function() {
 			$scope.Response = null;
