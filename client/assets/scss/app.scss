@@ -88,13 +88,12 @@ img.gitter-badge {
 			cursor: help;
 		}
 		span.currency {
-			background: url('../img/currency_icons.png');
 			width: 30px;
 			height: 30px;
 			display: inline-block;
 			background-size: 30px;
 			padding-right: 35px;
-			background-repeat: no-repeat;
+			background: url('../img/currency_icons.png') no-repeat;
 
 			&.Regal {
 				background-position: right 0;
@@ -190,6 +189,10 @@ img.gitter-badge {
 	.grid-block.item-info {
 		flex-wrap: initial;
 		-webkit-flex-wrap: initial;
+		
+		&> .grid-block {
+			padding-left: 10px;
+		}
 	}
 
 	.image-container {
