@@ -131,7 +131,7 @@ function escapeField(result) {
 
 	appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
 		// Default
-		$scope.searchInput = "3s2l";
+		$scope.searchInput = "gloves 50life";
 		$scope.queryString = "";
 
 		$scope.termsMap = {};
