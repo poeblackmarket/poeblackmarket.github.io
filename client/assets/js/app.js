@@ -82,12 +82,11 @@ function hasBackTick(token) {
 
 function escapeField(result) {
 	var res = result;
-	//var delimIdx = result.indexOf(':');
-	//if (delimIdx != -1) {
-	//	var field = res.substr(0, delimIdx);
-	//	res = res.replace(field, field.replace(/\s/g, '\\ '));
-	//}
-	res.replace(/\s/g,'\\ ');
+	var delimIdx = result.indexOf(':');
+	if (delimIdx != -1) {
+		var field = res.substr(0, delimIdx);
+		res = res.replace(field, field.replace(/\s/g, '\\ '));
+	}
 	return res;
 }
 
