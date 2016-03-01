@@ -1,8 +1,231 @@
 @import "settings";
 @import "foundation";
 
+$bg_color_corrupted :#C22626;
 
-.grid-content .grid-block .result-item-box {
+li {
+	list-style-type: none;
+}
+ul {
+	margin-left: 0;
+}
+
+.label.corrupted {
+	padding: 0.13333rem 0.5rem;
+	background-color: $bg_color_corrupted;
+}
+
+.app-header {
+	h1 {
+		font-size: rem-calc(36px);
+		color: white;
+		margin: 0;
+	}
+	background-color: #00558b;
+	border-bottom: 1px solid #69768b;
+	text-align: center;
+}
+
+img.gitter-badge {
+	margin:0;
+}
+
+#main {
+	padding-top: 15px;
+}
+
+.grid-content.search-results .grid-block {
 	margin-left: 0;
 	margin-right: 0;
+}
+
+.search-results {
+	.item {
+		min-width: 600px;
+		margin: 10px 0;
+
+		span {
+			display: inline;
+			line-height: 1em;
+		}
+		
+		.sortable {
+			&:hover {
+				cursor: default;
+			}
+		}
+		.click {
+			cursor: pointer;
+		}
+	}
+	.item-box-left {
+		position: relative;
+	}
+	.grid-block.item-info {
+		min-height: 210px;
+		margin-left: 114px;
+	}
+	.item-info .grid-block {
+		flex-grow: 0;
+		-webkit-flex-grow: 0;
+
+		.seperator:before {
+			content: " · ";
+		}
+	}
+
+	.requirements, .sell-infos {
+		font-size: rem-calc(12px);
+		span {
+			padding-right: 5px;
+			line-height: 30px;
+			&.amount {
+				padding-right: 0;
+			}
+		}
+
+		.price:hover {
+			cursor: help;
+		}
+		span.currency {
+			background: url('../img/currency_icons.png');
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			background-size: 30px;
+			padding-right: 35px;
+			background-repeat: no-repeat;
+
+			&.Regal {
+				background-position: right 0;
+			}
+			&.Augmentation {
+				background-position: right -30px;
+			}
+			&.Wisdom {
+				background-position: right -60px;
+			}
+			&.Portal {
+				background-position: right -90px;
+			}
+			&.Alchemy {
+				background-position: right -120px;
+			}
+			&.Mirror {
+				background-position: right -150px;
+			}
+			&.Blessed {
+				background-position: right -180px;
+			}
+			&.Whetstone {
+				background-position: right -210px;
+			}
+			&.Scrap {
+				 background-position: right -240px;
+			}
+			&.Vaal {
+				background-position: right -270px;
+			}
+			&.Bauble {
+				background-position: right -300px;
+			}
+			&.Chaos {
+				background-position: right -330px;
+			}
+			&.Chisel {
+				background-position: right -360px;
+			}
+			&.Chromatic {
+				background-position: right -390px;
+			}
+			&.Divine {
+				 background-position: right -420px;
+			}
+			&.Exalted {
+				background-position: right -450px;
+			}
+			&.Transmutation {
+				background-position: right -480px;
+			}
+			&.Scouring {
+				background-position: right -510px;
+			}
+			&.Regret {
+				background-position: right -540px;
+			}
+			&.Fusing {
+				background-position: right -570px;
+			}
+			&.Prism {
+				background-position: right -600px;
+			}
+			&.Jeweller {
+				background-position: right -630px;
+			}
+			&.Alteration {
+				background-position: right -660px;
+			}
+			&.Chance {
+				background-position: right -690px;
+			}
+		}
+	}
+
+	.mods {
+		margin-bottom: 10px;
+
+		ul {
+			margin-top: 10px;
+			font-size: rem-calc(12px);
+		}
+		.firstExplicit {
+			border-top: 1px dotted #008ee8;
+		}
+		.unidentified {
+			color: $bg_color_corrupted;
+			font-weight: 700;
+		}
+	}
+
+	.grid-block.item-info {
+		flex-wrap: initial;
+		-webkit-flex-wrap: initial;
+	}
+
+	.image-container {
+		max-width: 114px;
+		width: 100%;
+		min-height: 210px;
+		background-size: contain;
+		padding: 10px;
+		background-repeat: no-repeat;
+		position: absolute;
+
+		.socket {
+			position: absolute;
+			height: 47px;
+			width: 47px;
+			background: url('../img/sockets.png');
+			top: 0;
+			left: 0;
+			margin: 10px;
+
+			&.middle {
+				top: 47px;
+			}
+			&.bottom {
+				top: 94px;
+			}
+			&.socketRight {
+				right:0;
+				left: initial;
+			}
+			&.socketBlue {
+				background-position: 0 -47px;
+			}
+			&.socketGreen {
+				background-position: 0 -94px;
+			}
+		}
+	}
 }

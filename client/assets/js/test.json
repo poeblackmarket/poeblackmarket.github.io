@@ -1,0 +1,117 @@
+{
+	"_index":"poe20160130",
+	"_type":"item",
+	"_id":"1594094:c55be601e6c8d27470b765d70184aef5",
+	"_score":null,
+	"_source":{
+	"info":{
+		"fullName":"Taryn's Shiver Maelstrom Staff",
+			"icon":"http://webcdn.pathofexile.com/image/Art/2DItems/Weapons/TwoHandWeapons/Staves/Tarynsshiver.png",
+			"flavourText":"Shed by the winged beast of night, A scaly frost-encrusted thorn. All who feel its wintry light Shiver in pain at the frozen dawn.",
+			"typeLine":"Maelstrom Staff",
+			"name":"Taryn's Shiver",
+			"tokenized":{
+			"fullName":"taryn's shiver maelstrom staff",
+				"flavourText":"shed by the winged beast of night, a scaly frost-encrusted thorn. all who feel its wintry light shiver in pain at the frozen dawn."
+		}
+	},
+	"requirements":{
+		"Level":64,
+			"Str":113,
+			"Int":113
+	},
+	"modsTotal":{
+		"#% Chance to Block":18,
+			"#% chance to Freeze":8,
+			"#% increased Spell Damage":56,
+			"+# to Level of Socketed Cold Gems":1,
+			"#% increased Cast Speed":11,
+			"#% increased Cold Damage":46,
+			"Enemies Frozen by you take #% increased Damage":20
+	},
+	"md5sum":"c55be601e6c8d27470b765d70184aef5",
+		"uuid":"1594094:c55be601e6c8d27470b765d70184aef5",
+		"properties":{
+		"Weapon":{
+			"Physical DPS":105,
+				"Critical Strike Chance":"6.4",
+				"Physical Damage":{
+				"avg":88,
+					"min":57,
+					"max":119
+			},
+			"Total DPS":105,
+				"Total Damage":{
+				"avg":88,
+					"min":57,
+					"max":119
+			},
+			"Attacks per Second":"1.2",
+				"type":{
+				"Staff":true
+			}
+		}
+	},
+	"shop":{
+		"lastUpdateDB":"2016-02-29 07:58:21",
+			"sellerIGN":"Assissia",
+			"added":1456750700000,
+			"priceChanges":0,
+			"chaosEquiv":0,
+			"modified":1456750700000,
+			"saleType":"offer",
+			"currency":"NONE",
+			"threadTitle":"Asisias shop {Online}",
+			"amount":0,
+			"sellerAccount":"Asisia",
+			"threadid":"1594094",
+			"updated":1456750700000,
+			"verified":"YES"
+	},
+	"sockets":{
+		"allSocketsSorted":"BG",
+			"sortedLinkGroup":{
+			"0":"B",
+				"1":"G"
+		},
+		"socketCount":2,
+			"allSockets":"B-G",
+			"largestLinkGroup":1
+	},
+	"mods":{
+		"Staff":{
+			"explicit":{
+				"#% chance to Freeze":8,
+					"#% increased Spell Damage":56,
+					"+# to Level of Socketed Cold Gems":1,
+					"#% increased Cast Speed":11,
+					"#% increased Cold Damage":46,
+					"Enemies Frozen by you take #% increased Damage":20
+			},
+			"implicit":{
+				"#% Chance to Block":18
+			}
+		}
+	},
+	"attributes":{
+		"equipType":"Two Handed Melee Weapon",
+			"support":true,
+			"identified":true,
+			"corrupted":false,
+			"explicitModsCount":6,
+			"baseItemType":"Weapon",
+			"inventoryHeight":4,
+			"implicitModsCount":1,
+			"rarity":"Unique",
+			"mirrored":false,
+			"frameType":3,
+			"itemType":"Staff",
+			"league":"Standard",
+			"lockedToCharacter":false,
+			"inventoryWidth":2
+	}
+},
+	"sort":[
+	1456750700000
+]
+}
