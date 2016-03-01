@@ -1,58 +1,94 @@
-"_source": {
-	"info": {
-		"fullName": "The Catalyst",
-			"icon": "http:\/\/webcdn.pathofexile.com\/image\/Art\/2DItems\/Divination\/InventoryIcon.png",
-			"flavourText": "Simple actions can lead the world to an early grave.",
-			"typeLine": "The Catalyst",
-			"name": "The Catalyst",
-			"tokenized": {
-			"DivinationReward": "currencyitem: vaal orb",
-				"fullName": "the catalyst",
-				"flavourText": "simple actions can lead the world to an early grave."
-		}
-	},
-	"shop": {
-		"lastUpdateDB": "2016-02-16 15:31:30",
-			"sellerIGN": "",
-			"added": 1455654687000,
-			"priceChanges": 0,
-			"chaosEquiv": 0,
-			"modified": 1455654687000,
-			"saleType": "offer",
-			"currency": "NONE",
-			"threadTitle": "Batty's Shop",
-			"amount": 0,
-			"sellerAccount": "Battanious",
-			"threadid": "1512065",
-			"updated": 1456192404000,
-			"verified": "YES"
-	},
-	"mods": {
-		"Card": {
-			"DivinationReward": "currencyitem: Vaal Orb"
-		}
-	},
-	"attributes": {
-		"equipType": "Card",
-			"support": true,
-			"identified": true,
-			"corrupted": false,
-			"explicitModsCount": 1,
-			"baseItemType": "Card",
-			"inventoryHeight": 1,
-			"rarity": "Divination Card",
-			"mirrored": false,
-			"frameType": 6,
-			"itemType": "Card",
-			"league": "Talisman",
-			"lockedToCharacter": false,
-			"inventoryWidth": 1
-	},
-	"md5sum": "53adf8b625cfea6aa04e4a21a02753e9",
-		"uuid": "1512065:53adf8b625cfea6aa04e4a21a02753e9",
-		"properties": {
-		"Card": {
-			"Stack Size": "1\/3"
-		}
-	}
+{
+  "_index": "poe20160130",
+  "_type": "item",
+  "_id": "1559024:3420e2dfd541905a06cea190d098b318",
+  "_score": null,
+  "_source": {
+    "modsPseudo": {
+      "# of Resistances": 1,
+      "+#% Total to Resistances": 33,
+      "+# Total to maximum Life": 71,
+      "+#% Total to Elemental Resistances": 33,
+      "+#% Total to Fire Resistance": 33,
+      "# of Elemental Resistances": 1
+    },
+    "info": {
+      "fullName": "Tempest Knuckle Slink Gloves",
+      "icon": "http://webcdn.pathofexile.com/image/Art/2DItems/Armours/Gloves/GlovesDex4.png",
+      "typeLine": "Slink Gloves",
+      "name": "Tempest Knuckle",
+      "tokenized": {"fullName": "tempest knuckle slink gloves"}
+    },
+    "requirements": {
+      "Level": 70,
+      "Dex": 77
+    },
+    "modsTotal": {
+      "#% increased Evasion Rating": 41,
+      "+#% to Fire Resistance": 33,
+      "#% increased Attack Speed": 10,
+      "#% reduced Attribute Requirements": 18,
+      "#% increased Stun Recovery": 13,
+      "+# to maximum Life": 71
+    },
+    "md5sum": "3420e2dfd541905a06cea190d098b318",
+    "uuid": "1559024:3420e2dfd541905a06cea190d098b318",
+    "properties": {"Armour": {"Evasion Rating": 296}},
+    "shop": {
+      "lastUpdateDB": "2016-02-24 03:44:32",
+      "sellerIGN": "",
+      "added": 1456303465000,
+      "priceChanges": 0,
+      "chaosEquiv": 15,
+      "modified": 1456303465000,
+      "saleType": "b/o",
+      "currency": "Chaos Orb",
+      "threadTitle": "A Little bit of everything shop",
+      "amount": 15,
+      "sellerAccount": "Hashimara",
+      "generatedWith": "Acquisition Plus",
+      "threadid": "1559024",
+      "updated": 1456827429000,
+      "verified": "YES"
+    },
+    "sockets": {
+      "allSocketsSorted": "GGR",
+      "sortedLinkGroup": {
+        "0": "G",
+        "1": "GR"
+      },
+      "socketCount": 3,
+      "allSockets": "G-RG",
+      "largestLinkGroup": 2
+    },
+    "mods": {
+      "Gloves": {
+        "explicit": {
+          "#% increased Evasion Rating": 41,
+          "+#% to Fire Resistance": 33,
+          "#% increased Attack Speed": 10,
+          "#% reduced Attribute Requirements": 18,
+          "#% increased Stun Recovery": 13,
+          "+# to maximum Life": 71
+        }
+      }
+    },
+    "attributes": {
+      "equipType": "Gloves",
+      "support": true,
+      "identified": true,
+      "corrupted": false,
+      "explicitModsCount": 6,
+      "baseItemType": "Armour",
+      "inventoryHeight": 2,
+      "rarity": "Rare",
+      "mirrored": false,
+      "frameType": 2,
+      "itemType": "Gloves",
+      "league": "Standard",
+      "lockedToCharacter": false,
+      "inventoryWidth": 2
+    }
+  },
+  "sort": [1456827429000]
 }

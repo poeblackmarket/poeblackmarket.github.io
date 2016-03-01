@@ -46,11 +46,10 @@ url: /
 					<div class="grid-block item-inner-border">
 						<div class="grid-block item-box-left">
 
-							<div class="grid-block image-container" ng-style="{'background-image': 'url({{ item._source.info.icon}})'}">
-								<div class="socket" ng-repeat="(socketNr, color) in item._source.sockets.sortedLinkGroup"
-										ng-class-odd="'socketLeft'" ng-class-even="'socketRight'"
-										ng-class="{middle: socketNr == 2 || socketNr == 3, bottom: socketNr == 4 || socketNr == 5, socketBlue: color=='B', socketGreen: color=='G', socketWhite: color=='W'}"
-										>
+							<div class="grid-block image-container" ng-style="{'background-image': 'url({{item._source.info.icon}})'}">
+								<div ng-repeat="cssClasses in getSocketClasses(item._source.sockets.allSockets)" class="socket {{cssClasses}}">
+								</div>
+								<div ng-repeat="cssClasses in getSocketLinkClasses(item._source.sockets.allSockets)" class="socketLink {{cssClasses}}">
 								</div>
 							</div>
 

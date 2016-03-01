@@ -191,9 +191,64 @@ function escapeField(result) {
 				}
 			}).then(function (response) {
 				$scope.Response = response;
+				//console.log(JSON.stringify($scope.Response));
 			}, function (err) {
 				console.trace(err.message);
 			});
+		}
+
+
+		$scope.getSocketClasses = function(x) {
+			var sockets = [];
+			var colors = x.split('-').join('').split('');
+			for (var i = 0; i < colors.length; i++){
+				var cssClasses;
+				switch (i) {
+					case 0 : cssClasses = 'socketLeft'; break;
+					case 1 : cssClasses = 'socketRight'; break;
+					case 2 : cssClasses = 'socketRight middle'; break;
+					case 3 : cssClasses = 'socketLeft middle'; break;
+					case 4 : cssClasses = 'socketLeft bottom'; break;
+					case 5 : cssClasses = 'socketRight bottom'; break;
+				}
+				switch (colors[i]) {
+					case 'W' : cssClasses += ' socketWhite'; break;
+					case 'R' : cssClasses += ' socketRed'; break;
+					case 'G' : cssClasses += ' socketGreen'; break;
+					case 'B' : cssClasses += ' socketBlue'; break;
+				}
+				sockets[i] = cssClasses;
+			}
+			return sockets;
+		}
+		// probably way to complicated, but I was tired.
+		$scope.getSocketLinkClasses = function(x) {
+			var groups = x.split('-');
+			var pointer = 0;
+			var pos = [];
+
+			for (var i = 0; i < groups.length; i++) {
+				var count = groups[i].length - 1;
+
+				try {
+					pointer += groups[i - 1].length;
+				} catch (err){}
+
+				if(count > 0) {
+					for (var j = 0; j < count; j++) {
+						var cssClasses;
+						switch (pointer+j) {
+							case 0 : cssClasses = 'socketLinkCenter'; break;
+							case 1 : cssClasses = 'socketLinkRight'; break;
+							case 2 : cssClasses = 'socketLinkCenter middle'; break;
+							case 3 : cssClasses = 'socketLinkLeft middle'; break;
+							case 4 : cssClasses = 'socketLinkCenter bottom'; break;
+						}
+						pos.push(cssClasses);
+					}
+				}
+			}
+			return pos;
 		}
 	}]);
 

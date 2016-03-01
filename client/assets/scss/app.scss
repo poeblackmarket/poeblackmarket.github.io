@@ -286,5 +286,42 @@ img.gitter-badge {
 				background-position: 0 -94px;
 			}
 		}
+
+		.socketLink {
+			position: absolute;
+			height: 47px;
+			width: 47px;
+			background: url('../img/sockets.png');
+			top: 0;
+			left: 0;
+			margin: 10px;
+
+			&.socketLinkCenter {
+				background-position: 0 -188px;
+				left: 23px;
+				&.middle {
+					top: 48px;
+				}
+				&.bottom {
+					top: 95px;
+				}
+			}
+			&.socketLinkLeft, &.socketLinkRight {
+				background-position: 0 -141px;
+				top: 24px;
+				&.middle {
+					top: 71px;
+				}
+			}
+			&.socketLinkRight {
+				background-position: 0 -141px;
+				left: 46px;
+			}
+			&.socketLinkLeft {
+				background-position: 0 -141px;
+				left: -1px;
+			}
+
+		}
 	}
 }
