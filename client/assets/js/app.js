@@ -198,12 +198,14 @@ function escapeField(result) {
 			});
 		};
 
+		/*
+			Save the current/last search terms to HTML storage
+		*/
 		$scope.saveLastSearch = function(){
 			var search = $scope.searchInput;
 			var savedSearches = [];
 
 			if (localStorage.getItem("savedSearches") !== null){
-				//localStorage.setItem("savedSearches", JSON.stringify([]));
 				savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
 			}
 
@@ -216,6 +218,9 @@ function escapeField(result) {
 			$scope.savedSearchesList = savedSearches.reverse();
 		};
 
+		/*
+			Delete selected saved search terms from HTML storage
+		*/
 		$scope.removeSearchFromList = function(x){
 			var savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
 			var pos = savedSearches.indexOf(x);
@@ -229,8 +234,35 @@ function escapeField(result) {
 
 		$scope.doSavedSearch = function(x){
 			console.log(x);
-		}
+		};
 
+		/*
+			Add values to mod description
+		*/
+		$scope.getItemMods = function(x) {
+			var mods = [];
+
+			for (var key in x) {
+				var mod = key;
+
+				if( typeof x[key] === 'number' ) {
+					mod = mod.replace('#',x[key]);
+				}
+				else {
+					var obj = x[key];
+					for (var prop in obj) {
+						if(prop == 'avg') continue
+						mod = mod.replace('#',obj[prop]);
+					}
+				}
+				mods.push(mod);
+			}
+			return mods;
+		};
+
+		/*
+			Get CSS Classes for item sockets
+		*/
 		$scope.getSocketClasses = function(x) {
 			var sockets = [];
 			var colors = x.split('-').join('').split('');
@@ -254,7 +286,10 @@ function escapeField(result) {
 			}
 			return sockets;
 		}
-		// probably way to complicated, but I was tired.
+
+		/*
+		 	Get CSS classes for item socket links
+		*/
 		$scope.getSocketLinkClasses = function(x) {
 			var groups = x.split('-');
 			var pointer = 0;

@@ -1,117 +1,406 @@
 {
-	"_index":"poe20160130",
-	"_type":"item",
-	"_id":"1594094:c55be601e6c8d27470b765d70184aef5",
-	"_score":null,
-	"_source":{
-	"info":{
-		"fullName":"Taryn's Shiver Maelstrom Staff",
-			"icon":"http://webcdn.pathofexile.com/image/Art/2DItems/Weapons/TwoHandWeapons/Staves/Tarynsshiver.png",
-			"flavourText":"Shed by the winged beast of night, A scaly frost-encrusted thorn. All who feel its wintry light Shiver in pain at the frozen dawn.",
-			"typeLine":"Maelstrom Staff",
-			"name":"Taryn's Shiver",
-			"tokenized":{
-			"fullName":"taryn's shiver maelstrom staff",
-				"flavourText":"shed by the winged beast of night, a scaly frost-encrusted thorn. all who feel its wintry light shiver in pain at the frozen dawn."
-		}
-	},
-	"requirements":{
-		"Level":64,
-			"Str":113,
-			"Int":113
-	},
-	"modsTotal":{
-		"#% Chance to Block":18,
-			"#% chance to Freeze":8,
-			"#% increased Spell Damage":56,
-			"+# to Level of Socketed Cold Gems":1,
-			"#% increased Cast Speed":11,
-			"#% increased Cold Damage":46,
-			"Enemies Frozen by you take #% increased Damage":20
-	},
-	"md5sum":"c55be601e6c8d27470b765d70184aef5",
-		"uuid":"1594094:c55be601e6c8d27470b765d70184aef5",
-		"properties":{
-		"Weapon":{
-			"Physical DPS":105,
-				"Critical Strike Chance":"6.4",
-				"Physical Damage":{
-				"avg":88,
-					"min":57,
-					"max":119
-			},
-			"Total DPS":105,
-				"Total Damage":{
-				"avg":88,
-					"min":57,
-					"max":119
-			},
-			"Attacks per Second":"1.2",
-				"type":{
-				"Staff":true
-			}
-		}
-	},
-	"shop":{
-		"lastUpdateDB":"2016-02-29 07:58:21",
-			"sellerIGN":"Assissia",
-			"added":1456750700000,
-			"priceChanges":0,
-			"chaosEquiv":0,
-			"modified":1456750700000,
-			"saleType":"offer",
-			"currency":"NONE",
-			"threadTitle":"Asisias shop {Online}",
-			"amount":0,
-			"sellerAccount":"Asisia",
-			"threadid":"1594094",
-			"updated":1456750700000,
-			"verified":"YES"
-	},
-	"sockets":{
-		"allSocketsSorted":"BG",
-			"sortedLinkGroup":{
-			"0":"B",
-				"1":"G"
-		},
-		"socketCount":2,
-			"allSockets":"B-G",
-			"largestLinkGroup":1
-	},
-	"mods":{
-		"Staff":{
-			"explicit":{
-				"#% chance to Freeze":8,
-					"#% increased Spell Damage":56,
-					"+# to Level of Socketed Cold Gems":1,
-					"#% increased Cast Speed":11,
-					"#% increased Cold Damage":46,
-					"Enemies Frozen by you take #% increased Damage":20
-			},
-			"implicit":{
-				"#% Chance to Block":18
-			}
-		}
-	},
-	"attributes":{
-		"equipType":"Two Handed Melee Weapon",
-			"support":true,
-			"identified":true,
-			"corrupted":false,
-			"explicitModsCount":6,
-			"baseItemType":"Weapon",
-			"inventoryHeight":4,
-			"implicitModsCount":1,
-			"rarity":"Unique",
-			"mirrored":false,
-			"frameType":3,
-			"itemType":"Staff",
-			"league":"Standard",
-			"lockedToCharacter":false,
-			"inventoryWidth":2
-	}
-},
-	"sort":[
-	1456750700000
-]
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "failed": 0
+  },
+  "hits": {
+    "total": 4,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "poe20160301",
+        "_type": "item",
+        "_id": "pwx-ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546-2-8",
+        "_score": null,
+        "_source": {
+          "modsPseudo": {},
+          "info": {
+            "fullName": "Shagreen Gloves",
+            "icon": "http://webcdn.pathofexile.com/image/Art/2DItems/Armours/Gloves/GlovesDex4.png",
+            "typeLine": "Shagreen Gloves",
+            "name": "Shagreen Gloves",
+            "tokenized": {"fullName": "shagreen gloves"}
+          },
+          "propertiesPseudo": {"Armour": {"estimatedQ20": {"Evasion Rating": 184}}},
+          "requirements": {
+            "Level": 54,
+            "Dex": 78
+          },
+          "uuid": "pwx-ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546-2-8",
+          "properties": {"Armour": {"Evasion Rating": 154}},
+          "shop": {
+            "stash": {
+              "xLocation": "2",
+              "inventoryID": "Stash58",
+              "yLocation": "8",
+              "stashName": "~gb/o 1 chaos",
+              "stashID": "ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546"
+            },
+            "added": 1456862316000,
+            "chaosEquiv": 1,
+            "modified": 1456862316000,
+            "note": null,
+            "currency": "Chaos Orb",
+            "saleType": "gb/o",
+            "amount": "1",
+            "defaultMessage": "@pwx I would like to buy your Shagreen Gloves listed for 1 Chaos Orb (League:Talisman, Stash Tab:\"~gb/o 1 chaos\" [x2,y8])",
+            "sellerAccount": "pwx",
+            "lastCharacterName": "pwxig",
+            "hasPrice": true,
+            "verified": "YES",
+            "updated": 1456864699000,
+            "priceSource": "stashName"
+          },
+          "sockets": {
+            "totalRed": 1,
+            "totalGreen": 2,
+            "allSocketsGGG": "G-R-G-B",
+            "sortedLinkGroup": {"0": "BGGR"},
+            "allSockets": "GRGB",
+            "totalBlue": 1,
+            "allSocketsSorted": "BGGR",
+            "socketCount": 4,
+            "largestLinkGroup": 4
+          },
+          "attributes": {
+            "equipType": "Gloves",
+            "support": true,
+            "identified": true,
+            "corrupted": false,
+            "ilvl": 52,
+            "baseItemType": "Armour",
+            "inventoryHeight": 2,
+            "baseItemName": "Shagreen Gloves",
+            "rarity": "Normal",
+            "mirrored": false,
+            "frameType": 0,
+            "itemType": "Gloves",
+            "league": "Talisman",
+            "inventoryWidth": 2,
+            "lockedToCharacter": false
+          }
+        },
+        "sort": [1456864699000]
+      },
+      {
+        "_index": "poe20160301",
+        "_type": "item",
+        "_id": "pwx-ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546-4-8",
+        "_score": null,
+        "_source": {
+          "modsPseudo": {
+            "# of Resistances": 1,
+            "+# Total to maximum Life": 47,
+            "+#% Total to Resistances": 23,
+            "+#% Total to Elemental Resistances": 23,
+            "+#% Total to Fire Resistance": 23,
+            "# of Elemental Resistances": 1,
+            "#% Total increased Evasion Rating": 31
+          },
+          "info": {
+            "fullName": "Corruption Nails Sharkskin Gloves",
+            "icon": "http://webcdn.pathofexile.com/image/Art/2DItems/Armours/Gloves/GlovesDex3.png",
+            "typeLine": "Sharkskin Gloves",
+            "name": "Corruption Nails",
+            "tokenized": {"fullName": "corruption nails sharkskin gloves"}
+          },
+          "propertiesPseudo": {"Armour": {"estimatedQ20": {"Evasion Rating": 195}}},
+          "requirements": {
+            "Level": 45,
+            "Dex": 66
+          },
+          "modsTotal": {
+            "#% increased Evasion Rating": 31,
+            "+#% to Fire Resistance": 23,
+            "+# Life gained on Kill": 8,
+            "#% increased Stun Recovery": 11,
+            "+# to maximum Life": 47,
+            "+# to Accuracy Rating": 236
+          },
+          "uuid": "pwx-ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546-4-8",
+          "properties": {
+            "Armour": {"Evasion Rating": 195},
+            "Quality": "20"
+          },
+          "shop": {
+            "stash": {
+              "xLocation": "4",
+              "inventoryID": "Stash61",
+              "yLocation": "8",
+              "stashName": "~gb/o 1 chaos",
+              "stashID": "ec64b4f0dc093fc6b988d75dbdcc6dc3934d11120c4f364cd215ae4f023e0546"
+            },
+            "added": 1456862317000,
+            "chaosEquiv": 0,
+            "modified": 1456862317000,
+            "note": "~b/o 0 alt",
+            "currency": "Orb of Alteration",
+            "saleType": "b/o",
+            "amount": 0,
+            "sellerAccount": "pwx",
+            "lastCharacterName": "pwxig",
+            "hasPrice": false,
+            "verified": "YES",
+            "updated": 1456864699000,
+            "priceSource": "note"
+          },
+          "sockets": {
+            "totalRed": 1,
+            "totalGreen": 2,
+            "allSocketsGGG": "R-B-G-G",
+            "sortedLinkGroup": {"0": "BGGR"},
+            "allSockets": "RBGG",
+            "totalBlue": 1,
+            "allSocketsSorted": "BGGR",
+            "socketCount": 4,
+            "largestLinkGroup": 4
+          },
+          "mods": {
+            "Gloves": {
+              "explicit": {
+                "#% increased Evasion Rating": 31,
+                "+#% to Fire Resistance": 23,
+                "+# Life gained on Kill": 8,
+                "#% increased Stun Recovery": 11,
+                "+# to Accuracy Rating": 236
+              },
+              "crafted": {"+# to maximum Life": 47}
+            }
+          },
+          "attributes": {
+            "equipType": "Gloves",
+            "support": true,
+            "corrupted": false,
+            "explicitModsCount": 5,
+            "craftedModsCount": 1,
+            "baseItemName": "Sharkskin Gloves",
+            "lockedToCharacter": false,
+            "identified": true,
+            "ilvl": 55,
+            "baseItemType": "Armour",
+            "inventoryHeight": 2,
+            "mirrored": false,
+            "rarity": "Rare",
+            "frameType": 2,
+            "league": "Talisman",
+            "itemType": "Gloves",
+            "inventoryWidth": 2
+          }
+        },
+        "sort": [1456864699000]
+      },
+      {
+        "_index": "poe20160301",
+        "_type": "item",
+        "_id": "pwx-2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4-5-10",
+        "_score": null,
+        "_source": {
+          "modsPseudo": {},
+          "info": {
+            "fullName": "Sadima's Touch Wool Gloves",
+            "icon": "http://webcdn.pathofexile.com/image/Art/2DItems/Armours/Gloves/SadimasTouch.png",
+            "flavourText": "Wealth unspent is wealth wasted.",
+            "typeLine": "Wool Gloves",
+            "name": "Sadima's Touch",
+            "tokenized": {
+              "fullName": "sadima's touch wool gloves",
+              "flavourText": "wealth unspent is wealth wasted."
+            }
+          },
+          "propertiesPseudo": {"Armour": {"estimatedQ20": {"Energy Shield": 26}}},
+          "requirements": {"Level": 11},
+          "modsTotal": {
+            "+# to maximum Energy Shield": 18,
+            "#% increased Quantity of Items found": 16,
+            "Adds #-# Fire Damage to Attacks": {
+              "avg": 6,
+              "min": 4,
+              "max": 8
+            },
+            "Adds #-# Lightning Damage to Attacks": {
+              "avg": 7,
+              "min": 1,
+              "max": 13
+            }
+          },
+          "uuid": "pwx-2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4-5-10",
+          "properties": {"Armour": {"Energy Shield": 22}},
+          "shop": {
+            "stash": {
+              "xLocation": "5",
+              "inventoryID": "Stash19",
+              "yLocation": "10",
+              "stashName": "Sell1",
+              "stashID": "2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4"
+            },
+            "added": 1456864654000,
+            "chaosEquiv": 0,
+            "modified": 1456864654000,
+            "note": null,
+            "saleType": "Offer",
+            "currency": "null",
+            "amount": 0,
+            "sellerAccount": "pwx",
+            "lastCharacterName": "pwxig",
+            "hasPrice": false,
+            "verified": "YES",
+            "updated": 1456864676000,
+            "priceSource": "null"
+          },
+          "sockets": {
+            "totalRed": 1,
+            "totalGreen": 1,
+            "allSocketsGGG": "B-B-R G",
+            "sortedLinkGroup": {
+              "0": "BBR",
+              "1": "G"
+            },
+            "allSockets": "BBR-G",
+            "totalBlue": 2,
+            "allSocketsSorted": "BBGR",
+            "socketCount": 4,
+            "largestLinkGroup": 3
+          },
+          "mods": {
+            "Gloves": {
+              "explicit": {
+                "+# to maximum Energy Shield": 18,
+                "#% increased Quantity of Items found": 16,
+                "Adds #-# Fire Damage to Attacks": {
+                  "avg": 6,
+                  "min": 4,
+                  "max": 8
+                },
+                "Adds #-# Lightning Damage to Attacks": {
+                  "avg": 7,
+                  "min": 1,
+                  "max": 13
+                }
+              }
+            }
+          },
+          "attributes": {
+            "equipType": "Gloves",
+            "support": true,
+            "corrupted": false,
+            "explicitModsCount": 4,
+            "baseItemName": "Wool Gloves",
+            "lockedToCharacter": false,
+            "identified": true,
+            "ilvl": 77,
+            "baseItemType": "Armour",
+            "inventoryHeight": 2,
+            "mirrored": false,
+            "rarity": "Unique",
+            "frameType": 3,
+            "league": "Talisman",
+            "itemType": "Gloves",
+            "inventoryWidth": 2
+          }
+        },
+        "sort": [1456864676000]
+      },
+      {
+        "_index": "poe20160301",
+        "_type": "item",
+        "_id": "pwx-2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4-7-0",
+        "_score": null,
+        "_source": {
+          "modsPseudo": {
+            "+# Total to maximum Life": 50,
+            "#% Total increased Armour": 42,
+            "+# Total to Strength": 100,
+            "+# Total to Attributes": 100
+          },
+          "info": {
+            "fullName": "Meginord's Vise Steel Gauntlets",
+            "icon": "http://webcdn.pathofexile.com/image/Art/2DItems/Armours/Gloves/GlovesStr5.png",
+            "flavourText": "Ride with pride, strike with vengeance, live with honour.",
+            "typeLine": "Steel Gauntlets",
+            "name": "Meginord's Vise",
+            "tokenized": {
+              "fullName": "meginord's vise steel gauntlets",
+              "flavourText": "ride with pride, strike with vengeance, live with honour."
+            }
+          },
+          "propertiesPseudo": {"Armour": {"estimatedQ20": {"Armour": 163}}},
+          "requirements": {
+            "Level": 35,
+            "Str": 52
+          },
+          "modsTotal": {
+            "#% increased Physical Damage": 10,
+            "+# to Strength": 100,
+            "#% increased Armour": 42
+          },
+          "uuid": "pwx-2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4-7-0",
+          "properties": {"Armour": {"Armour": 143}},
+          "shop": {
+            "stash": {
+              "xLocation": "7",
+              "inventoryID": "Stash7",
+              "yLocation": "0",
+              "stashName": "Sell1",
+              "stashID": "2973baa87537b9f49fc54a62a4a745bc8d277393e75f9986a70c41c4cf1cb5a4"
+            },
+            "added": 1456864654000,
+            "chaosEquiv": 0,
+            "modified": 1456864654000,
+            "note": null,
+            "saleType": "Offer",
+            "currency": "null",
+            "amount": 0,
+            "sellerAccount": "pwx",
+            "lastCharacterName": "pwxig",
+            "hasPrice": false,
+            "verified": "YES",
+            "updated": 1456864676000,
+            "priceSource": "null"
+          },
+          "sockets": {
+            "totalRed": 2,
+            "totalGreen": 1,
+            "allSocketsGGG": "G-R-R-B",
+            "sortedLinkGroup": {"0": "BGRR"},
+            "allSockets": "GRRB",
+            "totalBlue": 1,
+            "allSocketsSorted": "BGRR",
+            "socketCount": 4,
+            "largestLinkGroup": 4
+          },
+          "mods": {
+            "Gloves": {
+              "explicit": {
+                "#% increased Physical Damage": 10,
+                "+# to Strength": 100,
+                "#% increased Armour": 42
+              }
+            }
+          },
+          "attributes": {
+            "equipType": "Gloves",
+            "support": true,
+            "corrupted": false,
+            "explicitModsCount": 3,
+            "baseItemName": "Steel Gauntlets",
+            "lockedToCharacter": false,
+            "identified": true,
+            "ilvl": 70,
+            "baseItemType": "Armour",
+            "inventoryHeight": 2,
+            "mirrored": false,
+            "rarity": "Unique",
+            "frameType": 3,
+            "league": "Talisman",
+            "itemType": "Gloves",
+            "inventoryWidth": 2
+          }
+        },
+        "sort": [1456864676000]
+      }
+    ]
+  }
 }

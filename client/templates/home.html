@@ -132,11 +132,11 @@ url: /
 
 									<div class="grid-block mods">
 										<ul>
-											<li class="sortable" ng-repeat="(mod, value) in item._source.modsTotal"
+											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsTotal)"
 												ng-class="{implicit: ($index+1) <= item._source.attributes.implicitModsCount,
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
 												data-mod="{{mod}}" data-value="{{value}}">
-												<strong>Mod:</strong>{{mod}}, <strong>Value:</strong>{{value}}
+												{{mod}}
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
 										</ul>
