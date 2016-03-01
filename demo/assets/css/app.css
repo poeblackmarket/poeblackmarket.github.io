@@ -6536,7 +6536,44 @@ img.gitter-badge {
 
 .search-results .item {
   min-width: 600px;
-  margin: 10px 0; }
+  margin: 5px 0;
+  padding: 0; }
+  .search-results .item .item-border {
+    margin: 0 5px;
+    border-top: transparent; }
+  .search-results .item .item-inner-border {
+    border: 1px solid #004978;
+    padding: 5px 5px 10px 5px; }
+  .search-results .item .item-header {
+    line-height: 30px;
+    height: 30px;
+    color: #fff;
+    border-bottom: 1px solid #004978; }
+    .search-results .item .item-header .controls {
+      background-color: #004978;
+      padding: 0 8px;
+      border: 1px solid #004978;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px; }
+      .search-results .item .item-header .controls svg {
+        width: 25px !important;
+        height: 25px !important;
+        margin-top: 2px;
+        margin-left: 15px;
+        margin-right: 5px; }
+        .search-results .item .item-header .controls svg:hover {
+          cursor: pointer; }
+      .search-results .item .item-header .controls .switch.small {
+        width: 2.2rem;
+        height: 1.325rem;
+        margin-top: 4px; }
+      .search-results .item .item-header .controls .switch.small > label::after {
+        width: 1.325rem;
+        height: 1.325rem; }
+      .search-results .item .item-header .controls .switch input:checked + label {
+        background-color: #43AC6A; }
+        .search-results .item .item-header .controls .switch input:checked + label:after {
+          border-color: #43AC6A; }
   .search-results .item span {
     display: inline;
     line-height: 1em; }
@@ -6569,13 +6606,12 @@ img.gitter-badge {
   .search-results .requirements .price:hover, .search-results .sell-infos .price:hover {
     cursor: help; }
   .search-results .requirements span.currency, .search-results .sell-infos span.currency {
-    background: url("../img/currency_icons.png");
     width: 30px;
     height: 30px;
     display: inline-block;
     background-size: 30px;
     padding-right: 35px;
-    background-repeat: no-repeat; }
+    background: url("../img/currency_icons.png") no-repeat; }
     .search-results .requirements span.currency.Regal, .search-results .sell-infos span.currency.Regal {
       background-position: right 0; }
     .search-results .requirements span.currency.Augmentation, .search-results .sell-infos span.currency.Augmentation {
@@ -6640,6 +6676,8 @@ img.gitter-badge {
   -ms-flex-wrap: initial;
       flex-wrap: initial;
   -webkit-flex-wrap: initial; }
+  .search-results .grid-block.item-info > .grid-block {
+    padding-left: 10px; }
 
 .search-results .image-container {
   max-width: 114px;
@@ -6648,7 +6686,8 @@ img.gitter-badge {
   background-size: contain;
   padding: 10px;
   background-repeat: no-repeat;
-  position: absolute; }
+  position: absolute;
+  background-position: right 10px; }
   .search-results .image-container .socket {
     position: absolute;
     height: 47px;
