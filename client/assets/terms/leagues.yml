@@ -6,6 +6,6 @@ standard|sc:
 hardcore|hc:
   query: attribute.league:Hardcore
 t(e?mp)?(st(andar)?d|sc):
-  query: attribute.league:Talisman
+  query: attribute.league:Perandus
 t(e?mp)?(hardcore|hc):
-  query: attribute.league:Hardcore Talisman
+  query: attribute.league:Hardcore Perandus
