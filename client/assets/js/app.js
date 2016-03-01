@@ -194,7 +194,15 @@ function escapeField(result) {
     }]);
 
     // Custom filters
-    // appModule.filter("prettyJSON", () => json => JSON.stringify(json, null, " "))
+    appModule.filter("currencyToCssClass", () => str => {
+      var currencyCssClassMap = new Map([
+          ["Chaos Orb", "chaos-orb"],
+          ["Exalted Orb", "exalt-orb"]
+      ]);
+      var result = currencyCssClassMap.get(str);
+      if(!result) result = str;
+      return result;
+    });
 
     // Custom Directive
     appModule.directive('myEnter', function () {
