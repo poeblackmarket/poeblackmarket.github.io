@@ -251,7 +251,7 @@ function escapeField(result) {
 				else {
 					var obj = x[key];
 					for (var prop in obj) {
-						if(prop == 'avg') continue
+						if(prop == 'avg') continue;
 						mod = mod.replace('#',obj[prop]);
 					}
 				}
@@ -285,7 +285,7 @@ function escapeField(result) {
 				sockets[i] = cssClasses;
 			}
 			return sockets;
-		}
+		};
 
 		/*
 		 	Get CSS classes for item socket links

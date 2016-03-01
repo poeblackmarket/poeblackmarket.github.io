@@ -143,7 +143,7 @@ url: /
 									</div>
 
 									<div class="grid-block sell-infos">
-										<span class=""  ng-if="item._source.shop.saleType">
+										<span class=""  ng-if="item._source.shop.saleType && item._source.shop.amount">
 											{{item._source.shop.saleType}}:
 										</span>
 										<span class="sortable price amount"
