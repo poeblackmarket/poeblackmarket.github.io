@@ -260,6 +260,12 @@ img.gitter-badge {
 		position: absolute;
 		background-position: right 10px;
 
+		&:hover {
+			.socket, .socketLink {
+				opacity:0;
+			}
+		}
+
 		.socket {
 			position: absolute;
 			height: 47px;
@@ -322,6 +328,28 @@ img.gitter-badge {
 				left: -1px;
 			}
 
+		}
+	}
+}
+
+.panel {
+	width: 400px;
+
+	.saved-search.accordion {
+		margin-top: 50px;
+		a {
+			position: relative;
+		}
+
+		svg {
+			position: absolute;
+			right: 10px;
+			top:10px;
+			width: 21px;
+			height: 21px;
+			&:hover {
+				cursor:pointer;
+			}
 		}
 	}
 }

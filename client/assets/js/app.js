@@ -133,6 +133,7 @@ function escapeField(result) {
 		// Default
 		$scope.searchInput = "gloves 50life";
 		$scope.queryString = "";
+		$scope.savedSearchesList = JSON.parse(localStorage.getItem("savedSearches"));
 
 		$scope.termsMap = {};
 
@@ -195,8 +196,40 @@ function escapeField(result) {
 			}, function (err) {
 				console.trace(err.message);
 			});
-		}
+		};
 
+		$scope.saveLastSearch = function(){
+			var search = $scope.searchInput;
+			var savedSearches = [];
+
+			if (localStorage.getItem("savedSearches") !== null){
+				//localStorage.setItem("savedSearches", JSON.stringify([]));
+				savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
+			}
+
+			// return if search is already saved
+			if(savedSearches.indexOf(search) != -1){
+				return;
+			}
+			savedSearches.push(search);
+			localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+			$scope.savedSearchesList = savedSearches.reverse();
+		};
+
+		$scope.removeSearchFromList = function(x){
+			var savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
+			var pos = savedSearches.indexOf(x);
+
+			if(pos != -1){
+				savedSearches.splice(pos, 1);
+				localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+				$scope.savedSearchesList = savedSearches.reverse();
+			}
+		};
+
+		$scope.doSavedSearch = function(x){
+			console.log(x);
+		}
 
 		$scope.getSocketClasses = function(x) {
 			var sockets = [];

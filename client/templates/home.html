@@ -4,15 +4,40 @@ url: /
 ---
 
 <div id="main" class="grid-container" ng-controller="SearchController" >
-	<p><strong>-- This still very much a work in progress, but are working hard!</strong></p>
+	<p><strong>-- This is still very much a work in progress, but we are working hard!</strong></p>
 	<div class="grid-content"> 
 		<!--div zf-panel="" id="panelName">
 			<a zf-close="" class="button">Close Panel</a>
 		-->	
 				<label>Search Input</label>
-				<input ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
+				<input id="searchField" ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
 				<a href="#" ng-click="doSearch()" class="button" value="Search"/>Search</a>
-				<hr width=100% size=1>			
+				<a href="#" ng-click="saveLastSearch()" class="button small">Save Search</a>
+				<a href="#" zf-toggle="savedSearchesPanel" class="button small hollow ">Show saved Searches</a>
+
+
+				<div zf-panel="" id="savedSearchesPanel" position="right">
+					<a zf-close="" class="close-button ng-scope">×</a>
+
+					<zf-accordion class="saved-search">
+						<zf-accordion-item title="Saved Searches">
+							<section class="block-list">
+								<ul>
+									<li class="" ng-repeat="data in savedSearchesList">
+										<a href="#" ng-model="searchInput" ng-click="doSavedSearch(data)">{{data}}</a>
+										<img zf-iconic="" icon="ban" size="small" class="iconic-color-alert" ng-click="removeSearchFromList(data)">
+									</li>
+								</ul>
+							</section>
+						</zf-accordion-item>
+						<zf-accordion-item title="Saved Items (soon)">
+							Nothing to see here
+						</zf-accordion-item>
+					</zf-accordion>
+
+				</div>
+
+				<hr width=100% size=1>
 		<!--/div-->
 	</div>
 	
@@ -118,6 +143,9 @@ url: /
 									</div>
 
 									<div class="grid-block sell-infos">
+										<span class=""  ng-if="item._source.shop.saleType">
+											{{item._source.shop.saleType}}:
+										</span>
 										<span class="sortable price amount"
 											  ng-if="item._source.shop.amount"
 											  data-value="{{item._source.shop.amount}}"
@@ -150,6 +178,7 @@ url: /
 								</div>
 							</div>
 						</div>
+
 						<div class="grid-block item-box-right">
 							<div class="item-stats">
 								<div class="grid-block"></div>
@@ -158,6 +187,7 @@ url: /
 								<div class="grid-block"></div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
