@@ -3,7 +3,7 @@
 #
 
 (spelldmg|sdmg):
-  query: _exists_:modsTotal.#% increased Spell Damage
+  query: modsTotal.#% increased Spell Damage:>0
 (\d+)(spelldmg|sdmg):
   query: modsTotal.#% increased Spell Damage:[$1 TO *]
 (\d+)-(\d+)(spelldmg|sdmg):

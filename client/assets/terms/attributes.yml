@@ -1,0 +1,22 @@
+rare|yellow:
+ query: attributes.rarity:Rare
+normal|white|gr(a|e)y:
+ query: attributes.rarity:Normal
+magic|blue:
+ query: attributes.rarity:Magic
+uniq(ue)?|orange:
+ query: attributes.rarity:Unique
+id(entified)?:
+ query: attributes.identified:true
+unid(entified)?:
+ query: attributes.identified:false
+corrupt(ed)?:
+ query: attributes.corrupted:true
+pure|(not|un)corrupt(ed)?|clea(n|r):
+ query: attributes.corrupted:false
+notcrafted:
+ query: attributes.craftedModsCount:0
+crafted:
+ query: attributes.craftedModsCount:>0
+ mirrored:
+  query: attributes.mirrored:true

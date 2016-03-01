@@ -46,11 +46,12 @@ function evalSearchTerm(token) {
     for (regex in terms) {
        if (terms.hasOwnProperty(regex)) {
         var rgex = new RegExp('^' + regex + '$', 'i');
-        var foundMatch = rgex.test(removeParensAndBackTick(token));
+        var cleanToken = removeParensAndBackTick(token);
+        var foundMatch = rgex.test(cleanToken);
         if (foundMatch) {
             result = terms[regex].query;
             // apply any captured regex groups
-            result = token.replace(rgex, result);
+            result = cleanToken.replace(rgex, result);
             // escape spaces for elasticsearch
             result = escapeField(result);
             if (hasOpenParen(token))  result = '(' + result;
@@ -125,13 +126,13 @@ function escapeField(result) {
 
   // Create the es service from the esFactory
   appModule.service('es', function (esFactory) {
-    return esFactory({ host: 'http://apikey:DEVELOPMENT-Indexer@api.exiletools.com' });
+    return esFactory({ host: 'http://apikey:07e669ae1b2a4f517d68068a8e24cfe4@api.exiletools.com' }); // poeblackmarketweb@gmail.com
   });
   
   
   appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
     // Default
-    $scope.searchInput = "staff 30sdmg";
+    $scope.searchInput = "3s2l";
     $scope.queryString = "";
     
     $scope.termsMap = {};
@@ -145,7 +146,11 @@ function escapeField(result) {
     $http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
     $http.get('assets/terms/mod-ofs.yml').then(mergeIntoTermsMap); 
     $http.get('assets/terms/mod-def.yml').then(mergeIntoTermsMap); 
-    
+    $http.get('assets/terms/mod-vaal.yml').then(mergeIntoTermsMap); 
+    $http.get('assets/terms/attributes.yml').then(mergeIntoTermsMap);
+    $http.get('assets/terms/sockets.yml').then(mergeIntoTermsMap);
+    $http.get('assets/terms/buyout.yml').then(mergeIntoTermsMap);
+	
     $scope.doSearch = function() {
         $scope.Response = null;
         var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
@@ -187,6 +192,9 @@ function escapeField(result) {
         });
       }
     }]);
+
+    // Custom filters
+    // appModule.filter("prettyJSON", () => json => JSON.stringify(json, null, " "))
 
     // Custom Directive
     appModule.directive('myEnter', function () {

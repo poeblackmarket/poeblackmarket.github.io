@@ -67,3 +67,9 @@ allatri|atri:
   query: modsPseudo.+# Total to Attributes:[$1 TO *]
 (\d+)-(\d+)allatri|atri:
   query: modsPseudo.+# Total to Attributes:[$1 TO $2]
+ms:
+  query: modsTotal.#% increased Movement Speed:>0
+(\d+)ms:
+  query: modsTotal.#% increased Movement Speed:[$1 TO *]
+(\d+)-(\d+)ms:
+  query: modsTotal.#% increased Movement Speed:[$1 TO $2]

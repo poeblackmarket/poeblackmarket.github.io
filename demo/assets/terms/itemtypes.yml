@@ -53,7 +53,7 @@ cur+(en)?(cy)?:
 Div(inatio)?(Card)?:
   query: attributes.itemType:Card
 fish:
-  query: attributes.itemType:Fishing Rod
+  query: attributes.itemType:"Fishing Rod"
 fla?sk:
   query: attributes.itemType:Flask
 gem:
@@ -67,4 +67,4 @@ quiv(er)?:
 ring:
   query: attributes.itemType:Ring
 frag:
-  query: attributes.itemType:Vaal Fragment
+  query: attributes.itemType:"Vaal Fragment"
