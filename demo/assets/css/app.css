@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -6504,6 +6505,166 @@ blockquote p {
 .float-none {
   float: none; }
 
-.grid-content .grid-block .result-item-box {
+li {
+  list-style-type: none; }
+
+ul {
+  margin-left: 0; }
+
+.label.corrupted {
+  padding: 0.13333rem 0.5rem;
+  background-color: #C22626; }
+
+.app-header {
+  background-color: #00558b;
+  border-bottom: 1px solid #69768b;
+  text-align: center; }
+  .app-header h1 {
+    font-size: 2.25rem;
+    color: white;
+    margin: 0; }
+
+img.gitter-badge {
+  margin: 0; }
+
+#main {
+  padding-top: 15px; }
+
+.grid-content.search-results .grid-block {
   margin-left: 0;
   margin-right: 0; }
+
+.search-results .item {
+  min-width: 600px;
+  margin: 10px 0; }
+  .search-results .item span {
+    display: inline;
+    line-height: 1em; }
+  .search-results .item .sortable:hover {
+    cursor: default; }
+  .search-results .item .click {
+    cursor: pointer; }
+
+.search-results .item-box-left {
+  position: relative; }
+
+.search-results .grid-block.item-info {
+  min-height: 210px;
+  margin-left: 114px; }
+
+.search-results .item-info .grid-block {
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  -webkit-flex-grow: 0; }
+  .search-results .item-info .grid-block .seperator:before {
+    content: " · "; }
+
+.search-results .requirements, .search-results .sell-infos {
+  font-size: 0.75rem; }
+  .search-results .requirements span, .search-results .sell-infos span {
+    padding-right: 5px;
+    line-height: 30px; }
+    .search-results .requirements span.amount, .search-results .sell-infos span.amount {
+      padding-right: 0; }
+  .search-results .requirements .price:hover, .search-results .sell-infos .price:hover {
+    cursor: help; }
+  .search-results .requirements span.currency, .search-results .sell-infos span.currency {
+    background: url("../img/currency_icons.png");
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-size: 30px;
+    padding-right: 35px;
+    background-repeat: no-repeat; }
+    .search-results .requirements span.currency.Regal, .search-results .sell-infos span.currency.Regal {
+      background-position: right 0; }
+    .search-results .requirements span.currency.Augmentation, .search-results .sell-infos span.currency.Augmentation {
+      background-position: right -30px; }
+    .search-results .requirements span.currency.Wisdom, .search-results .sell-infos span.currency.Wisdom {
+      background-position: right -60px; }
+    .search-results .requirements span.currency.Portal, .search-results .sell-infos span.currency.Portal {
+      background-position: right -90px; }
+    .search-results .requirements span.currency.Alchemy, .search-results .sell-infos span.currency.Alchemy {
+      background-position: right -120px; }
+    .search-results .requirements span.currency.Mirror, .search-results .sell-infos span.currency.Mirror {
+      background-position: right -150px; }
+    .search-results .requirements span.currency.Blessed, .search-results .sell-infos span.currency.Blessed {
+      background-position: right -180px; }
+    .search-results .requirements span.currency.Whetstone, .search-results .sell-infos span.currency.Whetstone {
+      background-position: right -210px; }
+    .search-results .requirements span.currency.Scrap, .search-results .sell-infos span.currency.Scrap {
+      background-position: right -240px; }
+    .search-results .requirements span.currency.Vaal, .search-results .sell-infos span.currency.Vaal {
+      background-position: right -270px; }
+    .search-results .requirements span.currency.Bauble, .search-results .sell-infos span.currency.Bauble {
+      background-position: right -300px; }
+    .search-results .requirements span.currency.Chaos, .search-results .sell-infos span.currency.Chaos {
+      background-position: right -330px; }
+    .search-results .requirements span.currency.Chisel, .search-results .sell-infos span.currency.Chisel {
+      background-position: right -360px; }
+    .search-results .requirements span.currency.Chromatic, .search-results .sell-infos span.currency.Chromatic {
+      background-position: right -390px; }
+    .search-results .requirements span.currency.Divine, .search-results .sell-infos span.currency.Divine {
+      background-position: right -420px; }
+    .search-results .requirements span.currency.Exalted, .search-results .sell-infos span.currency.Exalted {
+      background-position: right -450px; }
+    .search-results .requirements span.currency.Transmutation, .search-results .sell-infos span.currency.Transmutation {
+      background-position: right -480px; }
+    .search-results .requirements span.currency.Scouring, .search-results .sell-infos span.currency.Scouring {
+      background-position: right -510px; }
+    .search-results .requirements span.currency.Regret, .search-results .sell-infos span.currency.Regret {
+      background-position: right -540px; }
+    .search-results .requirements span.currency.Fusing, .search-results .sell-infos span.currency.Fusing {
+      background-position: right -570px; }
+    .search-results .requirements span.currency.Prism, .search-results .sell-infos span.currency.Prism {
+      background-position: right -600px; }
+    .search-results .requirements span.currency.Jeweller, .search-results .sell-infos span.currency.Jeweller {
+      background-position: right -630px; }
+    .search-results .requirements span.currency.Alteration, .search-results .sell-infos span.currency.Alteration {
+      background-position: right -660px; }
+    .search-results .requirements span.currency.Chance, .search-results .sell-infos span.currency.Chance {
+      background-position: right -690px; }
+
+.search-results .mods {
+  margin-bottom: 10px; }
+  .search-results .mods ul {
+    margin-top: 10px;
+    font-size: 0.75rem; }
+  .search-results .mods .firstExplicit {
+    border-top: 1px dotted #008ee8; }
+  .search-results .mods .unidentified {
+    color: #C22626;
+    font-weight: 700; }
+
+.search-results .grid-block.item-info {
+  -ms-flex-wrap: initial;
+      flex-wrap: initial;
+  -webkit-flex-wrap: initial; }
+
+.search-results .image-container {
+  max-width: 114px;
+  width: 100%;
+  min-height: 210px;
+  background-size: contain;
+  padding: 10px;
+  background-repeat: no-repeat;
+  position: absolute; }
+  .search-results .image-container .socket {
+    position: absolute;
+    height: 47px;
+    width: 47px;
+    background: url("../img/sockets.png");
+    top: 0;
+    left: 0;
+    margin: 10px; }
+    .search-results .image-container .socket.middle {
+      top: 47px; }
+    .search-results .image-container .socket.bottom {
+      top: 94px; }
+    .search-results .image-container .socket.socketRight {
+      right: 0;
+      left: initial; }
+    .search-results .image-container .socket.socketBlue {
+      background-position: 0 -47px; }
+    .search-results .image-container .socket.socketGreen {
+      background-position: 0 -94px; }
