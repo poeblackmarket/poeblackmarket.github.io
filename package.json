@@ -23,8 +23,5 @@
     "run-sequence": "^1.1.1",
     "yargs": "^3.15.0"
   },
-  "private": true,
-  "dependencies": {
-    "ngclipboard": "^1.1.1"
-  }
+  "private": true
 }
