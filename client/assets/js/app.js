@@ -134,6 +134,7 @@ function escapeField(result) {
 		$scope.searchInput = "gloves";
 		$scope.queryString = "";
 		$scope.savedSearchesList = JSON.parse(localStorage.getItem("savedSearches"));
+		$scope.savedItemsList = JSON.parse(localStorage.getItem("savedItems"));
 
 		$scope.termsMap = {};
 
@@ -198,7 +199,7 @@ function escapeField(result) {
 				$scope.Response = response;
 				//console.log(JSON.stringify($scope.Response));
 			}, function (err) {
-				console.trace(err.message);
+				//console.trace(err.message);
 			});
 		};
 
@@ -236,6 +237,71 @@ function escapeField(result) {
 			}
 		};
 
+		/*
+		 Save item to HTML storage
+		*/
+		$scope.saveItem = function(id, name, seller){
+			var savedItems = JSON.parse(localStorage.getItem("savedItems"));
+			var description = name +' (from: '+seller+')';
+			var item = { itemId : id, itemDescription : description };
+
+			if (savedItems === null){
+				savedItems = []
+			}
+
+			// return if item is already saved
+			if(findObjectById(savedItems, id) !== undefined){
+				return;
+			}
+
+			savedItems.push(item);
+			localStorage.setItem("savedItems", JSON.stringify(savedItems));
+			$scope.savedItemsList = savedItems.reverse();
+		};
+
+		/*
+			Check if Array contains a specific Object
+		*/
+		function containsObject(obj, list) {
+			var i;
+			for (i = 0; i < list.length; i++) {
+				if (list[i] === obj) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/*
+		 Delete selected saved search terms from HTML storage
+		*/
+		$scope.removeItemFromList = function(id){
+			var savedItems = JSON.parse(localStorage.getItem("savedItems"));
+
+			savedItems = savedItems.filter(function (el) {
+					return el.itemId !== id;
+				}
+			);
+
+			localStorage.setItem("savedItems", JSON.stringify(savedItems));
+			$scope.savedItemsList = savedItems.reverse();
+		};
+
+		/*
+			Find Object by id in Array
+		*/
+		function findObjectById(list, id) {
+			return list.filter(function( obj ) {
+				// coerce both obj.id and id to numbers
+				// for val & type comparison
+				return +obj.id === +id;
+			})[ 0 ];
+		}
+
+		/*
+			Trigger saved Search
+		*/
 		$scope.doSavedSearch = function(x){
 			console.log("triggering saved search: " + x);
 			$scope.searchInput = x;

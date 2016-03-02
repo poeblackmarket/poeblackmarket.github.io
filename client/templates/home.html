@@ -41,8 +41,15 @@ url: /
 								</ul>
 							</section>
 						</zf-accordion-item>
-						<zf-accordion-item title="Saved Items (soon)">
-							Nothing to see here
+						<zf-accordion-item title="Saved Items">
+							<section class="block-list">
+								<ul>
+									<li class="" ng-repeat="data in savedItemsList">
+										<a href="#" ng-click="">{{data.itemDescription}}</a>
+										<img zf-iconic="" icon="ban" size="small" class="iconic-color-alert" ng-click="removeItemFromList(data.itemId)">
+									</li>
+								</ul>
+							</section>
 						</zf-accordion-item>
 					</zf-accordion>
 
@@ -71,12 +78,12 @@ url: /
 							<div class="switch small">
 								<input type="checkbox" id="switch-{{item._id}}"
 									ng-model="switchValue"
-                     				ng-true-value="{backgroundColor:'yellow'}" ng-false-value="">
+                     				ng-true-value="{backgroundColor:'rgba(0,0,0,.2'}" ng-false-value="">
 								<label for="switch-{{item._id}}"></label>
 							</div>
 							<span class="float-right">(soon)</span>
 							<span>
-								<img zf-iconic="" icon="cart" size="medium" ng-click="" class="float-right iconic-color-secondary">
+								<img zf-iconic="" icon="cart" size="medium" ng-click="saveItem(item._id, item._source.info.fullName, item._source.shop.lastCharacterName)" class="float-right iconic-color-secondary">
 							</span>
 
 						</div>
@@ -188,8 +195,8 @@ url: /
 											<i class="seperator"></i>
 										</span>
 
-										<span class="" data-ign="{{item._source.shop.sellerAccount}}">
-											IGN: {{item._source.shop.sellerAccount}}
+										<span class="" data-ign="{{item._source.shop.lastCharacterName}}">
+											IGN: {{item._source.shop.lastCharacterName}}
 											<i class="seperator"></i>
 										</span>
 
