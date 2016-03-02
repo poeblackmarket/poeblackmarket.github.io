@@ -214,30 +214,15 @@ url: /
 						</div>
 
 						<div class="grid-block item-box-right">
-							<div class="item-stats float-left">
-								<!--<table ng-repeat="itemType in item._source.propertiesPseudo">
+							<div class="item-stats float-left" ng-repeat="itemType in item._source.propertiesPseudo">
+								<table >
 									<thead>
-
-									</thead>
-									<tbody>
-										<tr >
-											<td>Quality</td>
-											<td>{{item._source.properties.Quality}} <span>+{{20-(item._source.properties.Quality)}}</span></td>
-										</tr>
-										<tr ng-repeat="(defense, value) in itemType.estimatedQ20">
-											<td>{{defense}}</td>
-											<td>{{value}}</td>
-										</tr>
-									</tbody>
-								</table>-->
-								<table ng-repeat="itemType in item._source.propertiesPseudo">
-									<thead>
-
+										<th><td></td><td></td></th>
 									</thead>
 									<tbody>
 									<tr >
 										<td>Quality</td>
-										<td>{{item._source.properties.Quality}} <span>+{{20-(item._source.properties.Quality)}}</span></td>
+										<td>{{item._source.properties.Quality | defaultToValue }} <span>+{{20-(item._source.properties.Quality)}}</span></td>
 									</tr>
 									<tr ng-repeat="(defense, value) in itemType.estimatedQ20">
 										<td>{{defense}}</td>
@@ -245,9 +230,6 @@ url: /
 									</tr>
 									</tbody>
 								</table>
-							</div>
-							<div class="item-stats float-left">
-
 							</div>
 						</div>
 

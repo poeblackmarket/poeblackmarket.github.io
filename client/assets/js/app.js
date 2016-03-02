@@ -406,6 +406,15 @@ function escapeField(result) {
 		return result;
 	});
 
+	appModule.filter("defaultToValue", () => str => {
+		var defaultValues = new Map([
+			[undefined, "0"]
+		]);
+		var result = defaultValues.get(str);
+		if(!result) result = str;
+		return result;
+	});
+
 	appModule.filter('isEmpty', [function() {
 		return function(object) {
 			return angular.equals({}, object);
