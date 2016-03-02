@@ -69,7 +69,9 @@ url: /
 					<div class="grid-block item-header medium-12 right-ju">
 						<div class="controls" >
 							<div class="switch small">
-								<input type="checkbox" id="switch-{{item._id}}">
+								<input type="checkbox" id="switch-{{item._id}}"
+									ng-model="switchValue"
+                     				ng-true-value="{backgroundColor:'yellow'}" ng-false-value="">
 								<label for="switch-{{item._id}}"></label>
 							</div>
 							<span class="float-right">(soon)</span>
@@ -79,7 +81,7 @@ url: /
 
 						</div>
 					</div>
-					<div class="grid-block item-inner-border">
+					<div class="grid-block item-inner-border" ng-style="switchValue">
 						<div class="grid-block item-box-left">
 
 							<div class="grid-block image-container" ng-style="{'background-image': 'url({{item._source.info.icon}})'}">
