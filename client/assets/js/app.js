@@ -198,7 +198,7 @@ function escapeField(result) {
 				body: esBody
 			}).then(function (response) {
 				$scope.Response = response;
-				//console.log(JSON.stringify($scope.Response));
+				console.log(JSON.stringify($scope.Response));
 			}, function (err) {
 				console.trace(err.message);
 			});

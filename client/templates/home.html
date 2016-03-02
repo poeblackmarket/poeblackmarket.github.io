@@ -108,6 +108,7 @@ url: /
 									<div class="grid-block">
 										<h5 class="item-name">
 											<span class="label corrupted" ng-if="item._source.attributes.corrupted">Corrupted</span>
+											<span class="label mirrored" ng-if="item._source.attributes.mirrored">Mirrored</span>
 											<a class="name" href="http://www.pathofexile.com/forum/view-thread/{{item._source.shop.threadid}}" target="_blank">
 												{{item._source.info.fullName}}
 											</a>
@@ -116,10 +117,10 @@ url: /
 
 									<div class="grid-block requirements">
 										<span class="sortable"
-											  ng-show="{{item._source.requirements.iLvl}}"
-											  data-value="{{item._source.requirements.iLvl}}"
+											  ng-show="{{item._source.attributes.ilvl}}"
+											  data-value="{{item._source.attributes.ilvl}}"
 											  data-name="iLvl">
-											Item Lvl: {{item._source.requirements.iLvl}}
+											Item Lvl: {{item._source.attributes.ilvl}}
 											<i class="seperator"></i>
 										</span>
 
@@ -177,18 +178,18 @@ url: /
 									</div>
 
 									<div class="grid-block sell-infos">
-										<span class=""  ng-if="item._source.shop.saleType && item._source.shop.amount">
+										<span class=""  ng-if="item._source.shop.saleType && item._source.shop.amount > 0">
 											{{item._source.shop.saleType}}:
 										</span>
 										<span class="sortable price amount"
-											  ng-if="item._source.shop.amount"
+											  ng-if="item._source.shop.amount > 0"
 											  data-value="{{item._source.shop.amount}}"
 											  data-name="Price in {{item._source.shop.currency}}"
 											  title="{{item._source.shop.amount}} {{item._source.shop.currency}}">
 											{{item._source.shop.amount}}×
 										</span>
 										<span class="sortable price"
-											  ng-if="item._source.shop.amount"
+											  ng-if="item._source.shop.amount > 0"
 											  title="{{item._source.shop.amount}} {{item._source.shop.currency}}">
 											<span class="currency {{item._source.shop.currency}}"></span>
 											<i class="seperator"></i>
@@ -215,7 +216,7 @@ url: /
 
 						<div class="grid-block item-box-right">
 							<div class="item-stats float-left" ng-repeat="itemType in item._source.propertiesPseudo">
-								<table >
+								<table>
 									<thead>
 										<th><td></td><td></td></th>
 									</thead>
@@ -227,6 +228,27 @@ url: /
 									<tr ng-repeat="(defense, value) in itemType.estimatedQ20">
 										<td>{{defense}}</td>
 										<td>{{value}}</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="item-stats float-left" ng-if="item._source.properties.Gem !== undefinded">
+								<table>
+									<thead>
+									<th><td></td><td></td></th>
+									</thead>
+									<tbody>
+									<tr>
+										<td>Quality</td>
+										<td>{{item._source.properties.Quality | defaultToValue }}</td>
+									</tr>
+									<tr>
+										<td>Gem Level</td>
+										<td>{{item._source.properties.Gem.Level}}</td>
+									</tr>
+									<tr>
+										<td>Gem Experience</td>
+										<td>{{item._source.properties.Gem.Experience.PercentLeveled}}%</td>
 									</tr>
 									</tbody>
 								</table>

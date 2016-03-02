@@ -17,6 +17,10 @@ ul {
 	padding: 0.13333rem 0.5rem;
 	background-color: $bg_color_corrupted;
 }
+.label.corrupted {
+	padding: 0.13333rem 0.5rem;
+	background-color: grey;
+}
 
 .app-header {
 	h1 {
@@ -355,6 +359,7 @@ img.gitter-badge {
 
 	.item-stats {
 		font-size: rem-calc(12px);
+		margin-top: 36px;
 
 		table {
 			min-width: 150px;
