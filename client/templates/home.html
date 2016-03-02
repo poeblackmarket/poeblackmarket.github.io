@@ -206,7 +206,7 @@ url: /
 										</span>
 
 										<span>
-											<button ngclipboard class="click whisper-btn" data-clipboard-text="@{{item._source.shop.lastCharacterName}}, hi, are you there?">Whisper</button>
+											<button ngclipboard class="click whisper-btn" data-clipboard-text="{{item._source.shop.defaultMessage}}">Whisper</button>
 										</span>
 									</div>
 								</div>
@@ -215,9 +215,36 @@ url: /
 
 						<div class="grid-block item-box-right">
 							<div class="item-stats float-left">
-								<ul>
-									<li></li>
-								</ul>
+								<!--<table ng-repeat="itemType in item._source.propertiesPseudo">
+									<thead>
+
+									</thead>
+									<tbody>
+										<tr >
+											<td>Quality</td>
+											<td>{{item._source.properties.Quality}} <span>+{{20-(item._source.properties.Quality)}}</span></td>
+										</tr>
+										<tr ng-repeat="(defense, value) in itemType.estimatedQ20">
+											<td>{{defense}}</td>
+											<td>{{value}}</td>
+										</tr>
+									</tbody>
+								</table>-->
+								<table ng-repeat="itemType in item._source.propertiesPseudo">
+									<thead>
+
+									</thead>
+									<tbody>
+									<tr >
+										<td>Quality</td>
+										<td>{{item._source.properties.Quality}} <span>+{{20-(item._source.properties.Quality)}}</span></td>
+									</tr>
+									<tr ng-repeat="(defense, value) in itemType.estimatedQ20">
+										<td>{{defense}}</td>
+										<td>{{value}}</td>
+									</tr>
+									</tbody>
+								</table>
 							</div>
 							<div class="item-stats float-left">
 
