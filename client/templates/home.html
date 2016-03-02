@@ -206,7 +206,7 @@ url: /
 										</span>
 
 										<span>
-											<button ngclipboard class="click whisper-btn" data-clipboard-text="@{{item._source.shop.lastCharacterName}}, Hi, WTB your {{item._source.info.fullName}}">Whisper</button>
+											<button ngclipboard class="click whisper-btn" data-clipboard-text="{{copyWhisperToClipboard(item)}}">Copy Whisper</button>
 										</span>
 									</div>
 								</div>

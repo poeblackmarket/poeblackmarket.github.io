@@ -308,12 +308,27 @@ function escapeField(result) {
 			$scope.searchInput = x;
 			$scope.doSearch();
 		};
-        
-        $scope.copyWhisperToClipboard = function(id, defaultMessage) {
-                if (defaultMessage === undefined) {
-                        defaultMessage = 'No default available, create one!';
-                }
-                alert('Id: ' + id + '  defaultMessage: ' + defaultMessage);
+
+
+		/*
+			Prepare Whisper Message
+		*/
+        $scope.copyWhisperToClipboard = function(item) {
+			var message = item._source.shop.defaultMessage;
+			var seller = item._source.shop.lastCharacterName;
+			var itemName = item._source.info.fullName;
+			var league = item._source.attributes.league;
+			var stashTab = item._source.shop.stash.stashName;
+			var x = item._source.shop.stash.xLocation;
+			var y = item._source.shop.stash.yLocation;
+
+			if (message === undefined) {
+				message = '@' + seller + " Hi, I'd like to buy your "
+					+ itemName + ' in ' + league
+					+ ' (Stash-Tab: "'+ stashTab + '" [x' + x + ',y' + y + '])'
+					+ ', my offer is : ';
+			}
+			return message;
         };
 
 		/*
