@@ -20,3 +20,7 @@ crafted:
  query: attributes.craftedModsCount:>0
  mirrored:
   query: attributes.mirrored:true
+(\d+)glvl
+  query: properties.Gem.Level:$1
+(\d+)q(uality)?:
+  query: properties.Quality:$1
