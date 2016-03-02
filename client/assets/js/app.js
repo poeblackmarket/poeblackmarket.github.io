@@ -270,8 +270,9 @@ function escapeField(result) {
 			Get CSS Classes for item sockets
 		*/
 		$scope.getSocketClasses = function(x) {
+			if(typeof x == "undefined") return [];
 			var sockets = [];
-			var colors = x.split('-').join('').split('');
+			var colors = x.split('-').join('').split('');				
 			for (var i = 0; i < colors.length; i++){
 				var cssClasses;
 				switch (i) {
@@ -297,6 +298,7 @@ function escapeField(result) {
 		 	Get CSS classes for item socket links
 		*/
 		$scope.getSocketLinkClasses = function(x) {
+			if(typeof x == "undefined") return []; 
 			var groups = x.split('-');
 			var pointer = 0;
 			var pos = [];
