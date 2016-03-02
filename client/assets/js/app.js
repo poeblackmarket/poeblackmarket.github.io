@@ -162,9 +162,7 @@ function escapeField(result) {
 			console.log("searchQuery=" + searchQuery);
 			$scope.queryString = searchQuery;
 
-			es.search({
-				index: 'index',
-				body: {
+			var esBody = {
 					"sort": [
 						{
 							"shop.updated": {
@@ -189,7 +187,13 @@ function escapeField(result) {
 					 }
 					 },*/
 					size:100
-				}
+				};
+			if(!searchQuery) delete esBody['query'];
+			console.info("Final search json: " +  JSON.stringify(esBody));
+			
+			es.search({
+				index: 'index',
+				body: esBody
 			}).then(function (response) {
 				$scope.Response = response;
 				//console.log(JSON.stringify($scope.Response));
