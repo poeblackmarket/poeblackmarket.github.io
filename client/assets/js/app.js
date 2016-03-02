@@ -233,8 +233,9 @@ function escapeField(result) {
 		};
 
 		$scope.doSavedSearch = function(x){
-			console.log(x);
+			console.log("triggering saved search: " + x);
 			$scope.searchInput = x;
+			$scope.doSearch();
 		};
 
 		/*
