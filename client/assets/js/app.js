@@ -101,7 +101,8 @@ function escapeField(result) {
 		//foundation
 		'foundation',
 		'foundation.dynamicRouting',
-		'foundation.dynamicRouting.animations'
+		'foundation.dynamicRouting.animations',
+		'ngclipboard'
 	]);
 
 	appModule.config(config);
