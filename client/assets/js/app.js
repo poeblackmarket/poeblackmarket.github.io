@@ -309,13 +309,6 @@ function escapeField(result) {
 			$scope.doSearch();
 		};
 
-		$scope.copyWhisperToClipboard = function(id, defaultMessage) {
-			if (defaultMessage === undefined) {
-				defaultMessage = 'No default available, create one!';
-			}
-			alert('Id: ' + id + '  defaultMessage: ' + defaultMessage);
-		};
-
 		/*
 			Add values to mod description
 		*/
