@@ -42,6 +42,19 @@ img.gitter-badge {
 	margin-right: 0;
 }
 
+.search-options {
+	margin:0 !important;
+
+	.label-pseudoMods {
+		margin:0;
+		padding: 7px;
+	}
+}
+
+.highlight {
+	background-color: rgba(0,0,0,.2);
+}
+
 .search-results {
 	.item {
 		min-width: 600px;
@@ -55,6 +68,7 @@ img.gitter-badge {
 		.item-inner-border {
 			border: 1px solid $border_color_item;
 			padding: 5px 5px 10px 5px;
+
 		}
 		.item-header {
 			line-height: 30px;
@@ -226,12 +240,13 @@ img.gitter-badge {
 		}
 	}
 
-	.mods {
+	.mods, .modsPseudo {
 		margin-bottom: 10px;
 
 		ul {
 			margin-top: 10px;
 			font-size: rem-calc(12px);
+			margin-bottom: 5px;
 		}
 		.firstExplicit {
 			border-top: 1px dotted #008ee8;
@@ -240,6 +255,9 @@ img.gitter-badge {
 			color: $bg_color_corrupted;
 			font-weight: 700;
 		}
+	}
+	.modsPseudo {
+		opacity: .8;
 	}
 
 	.grid-block.item-info {

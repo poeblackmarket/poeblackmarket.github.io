@@ -11,10 +11,21 @@ url: /
 		-->	
 				<label>Search Input</label>
 				<input id="searchField" ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
-				<a href="#" ng-click="doSearch()" class="button" value="Search"/>Search</a>
+
+				<a href="#" ng-click="doSearch()" class="button" value="Search">Search</a>
 				<a href="#" ng-click="saveLastSearch()" class="button small">Save Search</a>
 				<a href="#" zf-toggle="savedSearchesPanel" class="button small hollow ">Show saved Searches</a>
 
+				<div class="grid-block search-options">
+					<span class="inline-label">
+						<div class="switch small">
+							<input type="checkbox" ng-model="switchPseudoMods" id="switch-pseudoMods">
+							<label for="switch-pseudoMods"></label>
+						</div>
+
+						<label class="label-pseudoMods">Show PseudoMods</label>
+					</span>
+				</div>
 
 				<div zf-panel="" id="savedSearchesPanel" position="right">
 					<a zf-close="" class="close-button ng-scope">×</a>
@@ -135,10 +146,19 @@ url: /
 											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsTotal)"
 												ng-class="{implicit: ($index+1) <= item._source.attributes.implicitModsCount,
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
-												data-mod="{{mod}}" data-value="{{value}}">
+												data-mod="{{mod}}">
 												{{mod}}
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
+										</ul>
+									</div>
+									<div class="grid-block modsPseudo">
+										<ul ng-show="switchPseudoMods==true" ng-if="!(item._source.modsPseudo | isEmpty)">
+											<li>[Pseudo Mods]</li>
+											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsPseudo)"
+												data-mod="{{mod}}">
+												{{mod}}
+											</li>
 										</ul>
 									</div>
 
@@ -180,11 +200,13 @@ url: /
 						</div>
 
 						<div class="grid-block item-box-right">
-							<div class="item-stats">
-								<div class="grid-block"></div>
+							<div class="item-stats float-left">
+								<ul>
+									<li></li>
+								</ul>
 							</div>
-							<div class="item-stats">
-								<div class="grid-block"></div>
+							<div class="item-stats float-left">
+
 							</div>
 						</div>
 

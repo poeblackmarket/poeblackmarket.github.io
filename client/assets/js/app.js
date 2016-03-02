@@ -131,7 +131,7 @@ function escapeField(result) {
 
 	appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
 		// Default
-		$scope.searchInput = "gloves 50life";
+		$scope.searchInput = "gloves";
 		$scope.queryString = "";
 		$scope.savedSearchesList = JSON.parse(localStorage.getItem("savedSearches"));
 
@@ -140,7 +140,7 @@ function escapeField(result) {
 		var mergeIntoTermsMap = function(res){
 			var ymlData = jsyaml.load(res.data);
 			jQuery.extend($scope.termsMap, ymlData);
-		}
+		};
 
 		$http.get('assets/terms/itemtypes.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
@@ -234,6 +234,7 @@ function escapeField(result) {
 
 		$scope.doSavedSearch = function(x){
 			console.log(x);
+			$scope.searchInput = x;
 		};
 
 		/*
@@ -330,6 +331,12 @@ function escapeField(result) {
 		if(!result) result = str;
 		return result;
 	});
+
+	appModule.filter('isEmpty', [function() {
+		return function(object) {
+			return angular.equals({}, object);
+		}
+	}]);
 
 	// Custom Directive
 	appModule.directive('myEnter', function () {
