@@ -374,4 +374,8 @@ img.gitter-badge {
 			}
 		}
 	}
+
+	.block-list li > a, .block-list li > span, .block-list li > label {
+		font-size: rem-calc(12);
+	}
 }

@@ -199,7 +199,7 @@ function escapeField(result) {
 				$scope.Response = response;
 				//console.log(JSON.stringify($scope.Response));
 			}, function (err) {
-				//console.trace(err.message);
+				console.trace(err.message);
 			});
 		};
 
