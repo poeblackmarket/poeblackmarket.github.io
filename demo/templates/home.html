@@ -1,14 +1,50 @@
 
 <div id="main" class="grid-container" ng-controller="SearchController" >
-	<p><strong>-- This still very much a work in progress, but are working hard!</strong></p>
+	<p><strong>-- This is still very much a work in progress, but we are working hard!</strong></p>
 	<div class="grid-content"> 
 		<!--div zf-panel="" id="panelName">
 			<a zf-close="" class="button">Close Panel</a>
 		-->	
 				<label>Search Input</label>
-				<input ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
-				<a href="#" ng-click="doSearch()" class="button" value="Search"/>Search</a>
-				<hr width=100% size=1>			
+				<input id="searchField" ng-model="searchInput" my-enter="doSearch()" size="150" type="text">
+
+				<a href="#" ng-click="doSearch()" class="button" value="Search">Search</a>
+				<a href="#" ng-click="saveLastSearch()" class="button small">Save Search</a>
+				<a href="#" zf-toggle="savedSearchesPanel" class="button small hollow ">Show saved Searches</a>
+
+				<div class="grid-block search-options">
+					<span class="inline-label">
+						<div class="switch small">
+							<input type="checkbox" ng-model="switchPseudoMods" id="switch-pseudoMods">
+							<label for="switch-pseudoMods"></label>
+						</div>
+
+						<label class="label-pseudoMods">Show PseudoMods</label>
+					</span>
+				</div>
+
+				<div zf-panel="" id="savedSearchesPanel" position="right">
+					<a zf-close="" class="close-button ng-scope">×</a>
+
+					<zf-accordion class="saved-search">
+						<zf-accordion-item title="Saved Searches">
+							<section class="block-list">
+								<ul>
+									<li class="" ng-repeat="data in savedSearchesList">
+										<a href="#" ng-model="searchInput" ng-click="doSavedSearch(data)">{{data}}</a>
+										<img zf-iconic="" icon="ban" size="small" class="iconic-color-alert" ng-click="removeSearchFromList(data)">
+									</li>
+								</ul>
+							</section>
+						</zf-accordion-item>
+						<zf-accordion-item title="Saved Items (soon)">
+							Nothing to see here
+						</zf-accordion-item>
+					</zf-accordion>
+
+				</div>
+
+				<hr width=100% size=1>
 		<!--/div-->
 	</div>
 	
@@ -103,17 +139,29 @@
 
 									<div class="grid-block mods">
 										<ul>
-											<li class="sortable" ng-repeat="(mod, value) in item._source.modsTotal"
+											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsTotal)"
 												ng-class="{implicit: ($index+1) <= item._source.attributes.implicitModsCount,
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
-												data-mod="{{mod}}" data-value="{{value}}">
-												<strong>Mod:</strong>{{mod}}, <strong>Value:</strong>{{value}}
+												data-mod="{{mod}}">
+												{{mod}}
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
 										</ul>
 									</div>
+									<div class="grid-block modsPseudo">
+										<ul ng-show="switchPseudoMods==true" ng-if="!(item._source.modsPseudo | isEmpty)">
+											<li>[Pseudo Mods]</li>
+											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsPseudo)"
+												data-mod="{{mod}}">
+												{{mod}}
+											</li>
+										</ul>
+									</div>
 
 									<div class="grid-block sell-infos">
+										<span class=""  ng-if="item._source.shop.saleType && item._source.shop.amount">
+											{{item._source.shop.saleType}}:
+										</span>
 										<span class="sortable price amount"
 											  ng-if="item._source.shop.amount"
 											  data-value="{{item._source.shop.amount}}"
@@ -146,14 +194,18 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="grid-block item-box-right">
-							<div class="item-stats">
-								<div class="grid-block"></div>
+							<div class="item-stats float-left">
+								<ul>
+									<li></li>
+								</ul>
 							</div>
-							<div class="item-stats">
-								<div class="grid-block"></div>
+							<div class="item-stats float-left">
+
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>

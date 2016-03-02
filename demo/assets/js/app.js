@@ -131,15 +131,16 @@ function escapeField(result) {
 
 	appModule.controller('SearchController', ['$scope', '$http', 'es', function($scope, $http, es) {
 		// Default
-		$scope.searchInput = "gloves 50life";
+		$scope.searchInput = "gloves";
 		$scope.queryString = "";
+		$scope.savedSearchesList = JSON.parse(localStorage.getItem("savedSearches"));
 
 		$scope.termsMap = {};
 
 		var mergeIntoTermsMap = function(res){
 			var ymlData = jsyaml.load(res.data);
 			jQuery.extend($scope.termsMap, ymlData);
-		}
+		};
 
 		$http.get('assets/terms/itemtypes.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/gems.yml').then(mergeIntoTermsMap);
@@ -149,7 +150,12 @@ function escapeField(result) {
 		$http.get('assets/terms/attributes.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/sockets.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/buyout.yml').then(mergeIntoTermsMap);
-
+		$http.get('assets/terms/uniques.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/basetypes.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/currencies.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/leagues.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/seller.yml').then(mergeIntoTermsMap);
+		
 		$scope.doSearch = function() {
 			$scope.Response = null;
 			var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
@@ -190,9 +196,74 @@ function escapeField(result) {
 			}, function (err) {
 				console.trace(err.message);
 			});
-		}
+		};
 
+		/*
+			Save the current/last search terms to HTML storage
+		*/
+		$scope.saveLastSearch = function(){
+			var search = $scope.searchInput;
+			var savedSearches = [];
 
+			if (localStorage.getItem("savedSearches") !== null){
+				savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
+			}
+
+			// return if search is already saved
+			if(savedSearches.indexOf(search) != -1){
+				return;
+			}
+			savedSearches.push(search);
+			localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+			$scope.savedSearchesList = savedSearches.reverse();
+		};
+
+		/*
+			Delete selected saved search terms from HTML storage
+		*/
+		$scope.removeSearchFromList = function(x){
+			var savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
+			var pos = savedSearches.indexOf(x);
+
+			if(pos != -1){
+				savedSearches.splice(pos, 1);
+				localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+				$scope.savedSearchesList = savedSearches.reverse();
+			}
+		};
+
+		$scope.doSavedSearch = function(x){
+			console.log(x);
+			$scope.searchInput = x;
+		};
+
+		/*
+			Add values to mod description
+		*/
+		$scope.getItemMods = function(x) {
+			var mods = [];
+
+			for (var key in x) {
+				var mod = key;
+
+				if( typeof x[key] === 'number' ) {
+					mod = mod.replace('#',x[key]);
+				}
+				else {
+					var obj = x[key];
+					for (var prop in obj) {
+						if(prop == 'avg') continue;
+						mod = mod.replace('#',obj[prop]);
+					}
+				}
+				mods.push(mod);
+			}
+			return mods;
+		};
+
+		/*
+			Get CSS Classes for item sockets
+		*/
 		$scope.getSocketClasses = function(x) {
 			var sockets = [];
 			var colors = x.split('-').join('').split('');
@@ -215,8 +286,11 @@ function escapeField(result) {
 				sockets[i] = cssClasses;
 			}
 			return sockets;
-		}
-		// probably way to complicated, but I was tired.
+		};
+
+		/*
+		 	Get CSS classes for item socket links
+		*/
 		$scope.getSocketLinkClasses = function(x) {
 			var groups = x.split('-');
 			var pointer = 0;
@@ -257,6 +331,12 @@ function escapeField(result) {
 		if(!result) result = str;
 		return result;
 	});
+
+	appModule.filter('isEmpty', [function() {
+		return function(object) {
+			return angular.equals({}, object);
+		}
+	}]);
 
 	// Custom Directive
 	appModule.directive('myEnter', function () {

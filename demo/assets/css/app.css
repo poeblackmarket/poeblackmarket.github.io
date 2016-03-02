@@ -6534,6 +6534,15 @@ img.gitter-badge {
   margin-left: 0;
   margin-right: 0; }
 
+.search-options {
+  margin: 0 !important; }
+  .search-options .label-pseudoMods {
+    margin: 0;
+    padding: 7px; }
+
+.highlight {
+  background-color: rgba(0, 0, 0, 0.2); }
+
 .search-results .item {
   min-width: 600px;
   margin: 5px 0;
@@ -6548,7 +6557,8 @@ img.gitter-badge {
     line-height: 30px;
     height: 30px;
     color: #fff;
-    border-bottom: 1px solid #004978; }
+    border-bottom: 1px solid #004978;
+    width: 100%; }
     .search-results .item .item-header .controls {
       background-color: #004978;
       padding: 0 8px;
@@ -6661,16 +6671,20 @@ img.gitter-badge {
     .search-results .requirements span.currency.Chance, .search-results .sell-infos span.currency.Chance {
       background-position: right -690px; }
 
-.search-results .mods {
+.search-results .mods, .search-results .modsPseudo {
   margin-bottom: 10px; }
-  .search-results .mods ul {
+  .search-results .mods ul, .search-results .modsPseudo ul {
     margin-top: 10px;
-    font-size: 0.75rem; }
-  .search-results .mods .firstExplicit {
+    font-size: 0.75rem;
+    margin-bottom: 5px; }
+  .search-results .mods .firstExplicit, .search-results .modsPseudo .firstExplicit {
     border-top: 1px dotted #008ee8; }
-  .search-results .mods .unidentified {
+  .search-results .mods .unidentified, .search-results .modsPseudo .unidentified {
     color: #C22626;
     font-weight: 700; }
+
+.search-results .modsPseudo {
+  opacity: .8; }
 
 .search-results .grid-block.item-info {
   -ms-flex-wrap: initial;
@@ -6688,6 +6702,8 @@ img.gitter-badge {
   background-repeat: no-repeat;
   position: absolute;
   background-position: right 10px; }
+  .search-results .image-container:hover .socket, .search-results .image-container:hover .socketLink {
+    opacity: 0; }
   .search-results .image-container .socket {
     position: absolute;
     height: 47px;
@@ -6707,6 +6723,8 @@ img.gitter-badge {
       background-position: 0 -47px; }
     .search-results .image-container .socket.socketGreen {
       background-position: 0 -94px; }
+    .search-results .image-container .socket.socketWhite {
+      background-position: 0 -235px; }
   .search-results .image-container .socketLink {
     position: absolute;
     height: 47px;
@@ -6733,3 +6751,18 @@ img.gitter-badge {
     .search-results .image-container .socketLink.socketLinkLeft {
       background-position: 0 -141px;
       left: -1px; }
+
+.panel {
+  width: 400px; }
+  .panel .saved-search.accordion {
+    margin-top: 50px; }
+    .panel .saved-search.accordion a {
+      position: relative; }
+    .panel .saved-search.accordion svg {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 21px;
+      height: 21px; }
+      .panel .saved-search.accordion svg:hover {
+        cursor: pointer; }
