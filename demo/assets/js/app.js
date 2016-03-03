@@ -101,7 +101,8 @@ function escapeField(result) {
 		//foundation
 		'foundation',
 		'foundation.dynamicRouting',
-		'foundation.dynamicRouting.animations'
+		'foundation.dynamicRouting.animations',
+		'ngclipboard'
 	]);
 
 	appModule.config(config);
@@ -134,6 +135,7 @@ function escapeField(result) {
 		$scope.searchInput = "gloves";
 		$scope.queryString = "";
 		$scope.savedSearchesList = JSON.parse(localStorage.getItem("savedSearches"));
+		$scope.savedItemsList = JSON.parse(localStorage.getItem("savedItems"));
 
 		$scope.termsMap = {};
 
@@ -162,9 +164,7 @@ function escapeField(result) {
 			console.log("searchQuery=" + searchQuery);
 			$scope.queryString = searchQuery;
 
-			es.search({
-				index: 'index',
-				body: {
+			var esBody = {
 					"sort": [
 						{
 							"shop.updated": {
@@ -189,10 +189,16 @@ function escapeField(result) {
 					 }
 					 },*/
 					size:100
-				}
+				};
+			if(!searchQuery) delete esBody['query'];
+			console.info("Final search json: " +  JSON.stringify(esBody));
+			
+			es.search({
+				index: 'index',
+				body: esBody
 			}).then(function (response) {
 				$scope.Response = response;
-				//console.log(JSON.stringify($scope.Response));
+				console.log(JSON.stringify($scope.Response));
 			}, function (err) {
 				console.trace(err.message);
 			});
@@ -232,10 +238,99 @@ function escapeField(result) {
 			}
 		};
 
-		$scope.doSavedSearch = function(x){
-			console.log(x);
-			$scope.searchInput = x;
+		/*
+		 Save item to HTML storage
+		*/
+		$scope.saveItem = function(id, name, seller){
+			var savedItems = JSON.parse(localStorage.getItem("savedItems"));
+			var description = name +' (from: '+seller+')';
+			var item = { itemId : id, itemDescription : description };
+
+			if (savedItems === null){
+				savedItems = []
+			}
+
+			// return if item is already saved
+			if(findObjectById(savedItems, id) !== undefined){
+				return;
+			}
+
+			savedItems.push(item);
+			localStorage.setItem("savedItems", JSON.stringify(savedItems));
+			$scope.savedItemsList = savedItems.reverse();
 		};
+
+		/*
+			Check if Array contains a specific Object
+		*/
+		function containsObject(obj, list) {
+			var i;
+			for (i = 0; i < list.length; i++) {
+				if (list[i] === obj) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/*
+		 Delete selected saved search terms from HTML storage
+		*/
+		$scope.removeItemFromList = function(id){
+			var savedItems = JSON.parse(localStorage.getItem("savedItems"));
+
+			savedItems = savedItems.filter(function (el) {
+					return el.itemId !== id;
+				}
+			);
+
+			localStorage.setItem("savedItems", JSON.stringify(savedItems));
+			$scope.savedItemsList = savedItems.reverse();
+		};
+
+		/*
+			Find Object by id in Array
+		*/
+		function findObjectById(list, id) {
+			return list.filter(function( obj ) {
+				// coerce both obj.id and id to numbers
+				// for val & type comparison
+				return +obj.id === +id;
+			})[ 0 ];
+		}
+
+		/*
+			Trigger saved Search
+		*/
+		$scope.doSavedSearch = function(x){
+			console.log("triggering saved search: " + x);
+			$scope.searchInput = x;
+			$scope.doSearch();
+		};
+
+
+		/*
+			Prepare Whisper Message
+		*/
+        $scope.copyWhisperToClipboard = function(item) {
+			var message = item._source.shop.defaultMessage;
+			var seller = item._source.shop.lastCharacterName;
+			var itemName = item._source.info.fullName;
+			var league = item._source.attributes.league;
+			var stashTab = item._source.shop.stash.stashName;
+			var x = item._source.shop.stash.xLocation;
+			var y = item._source.shop.stash.yLocation;
+
+			if (message === undefined) {
+				message = '@' + seller + " Hi, I'd like to buy your "
+					+ itemName + ' in ' + league
+					+ ' (Stash-Tab: "'+ stashTab + '" [x' + x + ',y' + y + '])'
+					+ ', my offer is : ';
+			}
+			console.log('Prepared Whisper Message: ' ,message);
+			return message;
+        };
 
 		/*
 			Add values to mod description
@@ -265,8 +360,9 @@ function escapeField(result) {
 			Get CSS Classes for item sockets
 		*/
 		$scope.getSocketClasses = function(x) {
+			if(typeof x == "undefined") return [];
 			var sockets = [];
-			var colors = x.split('-').join('').split('');
+			var colors = x.split('-').join('').split('');				
 			for (var i = 0; i < colors.length; i++){
 				var cssClasses;
 				switch (i) {
@@ -292,6 +388,7 @@ function escapeField(result) {
 		 	Get CSS classes for item socket links
 		*/
 		$scope.getSocketLinkClasses = function(x) {
+			if(typeof x == "undefined") return []; 
 			var groups = x.split('-');
 			var pointer = 0;
 			var pos = [];
@@ -328,6 +425,15 @@ function escapeField(result) {
 			["Exalted Orb", "exalt-orb"]
 		]);
 		var result = currencyCssClassMap.get(str);
+		if(!result) result = str;
+		return result;
+	});
+
+	appModule.filter("defaultToValue", () => str => {
+		var defaultValues = new Map([
+			[undefined, "0"]
+		]);
+		var result = defaultValues.get(str);
 		if(!result) result = str;
 		return result;
 	});

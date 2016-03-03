@@ -101,6 +101,7 @@ url: /
 								</div>
 								<div ng-repeat="cssClasses in getSocketLinkClasses(item._source.sockets.allSockets)" class="socketLink {{cssClasses}}">
 								</div>
+								<span class="stackSize" ng-if="item._source.properties.stackSize">{{item._source.properties.stackSize.current}}</span>
 							</div>
 
 							<div class="grid-block item-info">
@@ -116,6 +117,30 @@ url: /
 									</div>
 
 									<div class="grid-block requirements">
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map['Map Tier']}}"
+											  data-value="{{item._source.properties.Map['Map Tier']}}"
+											  data-name="MapTier">
+											Item rarity: +{{item._source.properties.Map['Map Tier']}}
+											<i class="seperator"></i>
+										</span>
+
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map['Item Quantity']}}"
+											  data-value="{{item._source.properties.Map['Item Quantity']}}"
+											  data-name="ItemQuantity">
+											Item quantity: +{{item._source.properties.Map['Item Quantity']}}
+											<i class="seperator"></i>
+										</span>
+
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map['Item Rarity']}}"
+											  data-value="{{item._source.properties.Map['Item Rarity']}}"
+											  data-name="ItemQuantity">
+											Item rarity: +{{item._source.properties.Map['Item Rarity']}}
+											<i class="seperator"></i>
+										</span>
+
 										<span class="sortable"
 											  ng-show="{{item._source.attributes.ilvl}}"
 											  data-value="{{item._source.attributes.ilvl}}"
@@ -172,6 +197,9 @@ url: /
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
 												data-mod="{{mod}}">
 												{{mod}}
+											</li>
+											<li ng-if="item._source.mods.Card">
+												{{item._source.mods.Card.DivinationReward}}
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
 										</ul>
@@ -242,6 +270,27 @@ url: /
 								</table>
 							</div>
 							<div class="item-stats float-left" ng-if="item._source.properties.Gem !== undefinded">
+								<table>
+									<thead>
+									<th><td></td><td></td></th>
+									</thead>
+									<tbody>
+									<tr>
+										<td>Quality</td>
+										<td>{{item._source.properties.Quality | defaultToValue }}</td>
+									</tr>
+									<tr>
+										<td>Gem Level</td>
+										<td>{{item._source.properties.Gem.Level}}</td>
+									</tr>
+									<tr>
+										<td>Gem Experience</td>
+										<td>{{item._source.properties.Gem.Experience.PercentLeveled}}%</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="item-stats float-left" ng-if="item._source.properties.Weapon">
 								<table>
 									<thead>
 									<th><td></td><td></td></th>

@@ -6515,6 +6515,10 @@ ul {
   padding: 0.13333rem 0.5rem;
   background-color: #C22626; }
 
+.label.corrupted {
+  padding: 0.13333rem 0.5rem;
+  background-color: grey; }
+
 .app-header {
   background-color: #00558b;
   border-bottom: 1px solid #69768b;
@@ -6752,6 +6756,17 @@ img.gitter-badge {
       background-position: 0 -141px;
       left: -1px; }
 
+.search-results .item-stats {
+  font-size: 0.75rem;
+  margin-top: 36px; }
+  .search-results .item-stats table {
+    min-width: 150px; }
+  .search-results .item-stats td {
+    padding: 3px 3px;
+    text-align: left; }
+    .search-results .item-stats td:nth-of-type(2) {
+      text-align: right; }
+
 .panel {
   width: 400px; }
   .panel .saved-search.accordion {
@@ -6766,3 +6781,5 @@ img.gitter-badge {
       height: 21px; }
       .panel .saved-search.accordion svg:hover {
         cursor: pointer; }
+  .panel .block-list li > a, .panel .block-list li > span, .panel .block-list li > label {
+    font-size: 0.75rem; }

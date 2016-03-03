@@ -6,3 +6,6 @@ build
 .sass-cache
 client/assets/js/test.json
 client/assets/js/example.json
+client/assets/js/divcard-example.json
+client/assets/js/map-example.json
+client/assets/js/sword-example.json
