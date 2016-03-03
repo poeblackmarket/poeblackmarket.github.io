@@ -62,17 +62,6 @@ img.gitter-badge {
 	flex: 0 0 100%;
 }
 
-.absoluteNavBtn {
-	position: absolute;
-	top: 67px;
-	&.savedSearches {
-		right: 10px;
-	}
-	&.scrollTop {
-		right: 182px;
-	}
-}
-
 .search-results {
 	.item {
 		min-width: 600px;
