@@ -225,10 +225,10 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 				body: esBody
 			}).then(function (response) {
 				$.each(response.hits.hits, function( index, value ) {
-				  addCustomFields(value._source);
+					addCustomFields(value._source);
+					addCustomFields(value._source.properties);
 				});
 				$scope.Response = response;
-				// console.log(JSON.stringify($scope.Response));
 			}, function (err) {
 				console.trace(err.message);
 			});
@@ -245,13 +245,14 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 			var itemTypeKey = firstKey(item.mods);
 			var explicits = item.mods[itemTypeKey].explicit;
 			var forgottenMods = $.map( explicits, function( propertyValue, modKey ) {
-			  return {
-			  	display : modToDisplay(propertyValue, modKey),
-			  	key : 'mods.' + itemTypeKey + '.explicit.' + modKey
-			  };
+				return {
+					display : modToDisplay(propertyValue, modKey),
+					key : 'mods.' + itemTypeKey + '.explicit.' + modKey
+				};
 			});
 			return forgottenMods;
 		}
+
 
 		/*
 			Save the current/last search terms to HTML storage
@@ -353,7 +354,6 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 			Trigger saved Search
 		*/
 		$scope.doSavedSearch = function(x){
-			console.log("triggering saved search: " + x);
 			$scope.searchInput = x;
 			$scope.doSearch();
 		};
@@ -377,7 +377,6 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 					+ ' (Stash-Tab: "'+ stashTab + '" [x' + x + ',y' + y + '])'
 					+ ', my offer is : ';
 			}
-			console.log('Prepared Whisper Message: ' ,message);
 			return message;
         };
 
@@ -465,7 +464,20 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 			}
 			return pos;
 		}
+
+		$scope.isEmpty = function (obj) {
+			for (var i in obj) if (obj.hasOwnProperty(i)) return false;
+			return true;
+		};
+
+		$scope.needsILvl = function (item) {
+			var type = item.itemType;
+			var blacklist = ['Map','Gem','Card','Currency'];
+
+			return blacklist.indexOf(type) == -1;
+		};
 	}]);
+
 
 	// Custom filters
 	appModule.filter("currencyToCssClass", () => str => {

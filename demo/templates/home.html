@@ -113,32 +113,17 @@
 									</div>
 
 									<div class="grid-block requirements">
-										<span class="sortable"
-											  ng-if="{{item._source.properties.Map['Map Tier']}}"
-											  data-value="{{item._source.properties.Map['Map Tier']}}"
-											  data-name="MapTier">
-											Item rarity: +{{item._source.properties.Map['Map Tier']}}
-											<i class="seperator"></i>
-										</span>
-
-										<span class="sortable"
-											  ng-if="{{item._source.properties.Map['Item Quantity']}}"
-											  data-value="{{item._source.properties.Map['Item Quantity']}}"
-											  data-name="ItemQuantity">
-											Item quantity: +{{item._source.properties.Map['Item Quantity']}}
-											<i class="seperator"></i>
-										</span>
-
-										<span class="sortable"
-											  ng-if="{{item._source.properties.Map['Item Rarity']}}"
-											  data-value="{{item._source.properties.Map['Item Rarity']}}"
-											  data-name="ItemQuantity">
-											Item rarity: +{{item._source.properties.Map['Item Rarity']}}
+										<span class="sortable" ng-show="!isEmpty(item._source.properties.Map)"
+											  ng-repeat="(prop, value) in item._source.properties.Map"
+											  data-value="{{value}}"
+											  data-name="{{prop}}">
+											{{prop}}: {{value}}
 											<i class="seperator"></i>
 										</span>
 
 										<span class="sortable"
 											  ng-show="{{item._source.attributes.ilvl}}"
+											  ng-if="needsILvl(item._source.attributes)"
 											  data-value="{{item._source.attributes.ilvl}}"
 											  data-name="iLvl">
 											Item Lvl: {{item._source.attributes.ilvl}}
@@ -248,13 +233,13 @@
 						</div>
 
 						<div class="grid-block item-box-right">
-							<div class="item-stats float-left" ng-repeat="itemType in item._source.propertiesPseudo">
+							<div class="item-stats float-left" ng-if="!item._source.properties.Weapon" ng-repeat="itemType in item._source.propertiesPseudo">
 								<table>
 									<thead>
 										<th><td></td><td></td></th>
 									</thead>
 									<tbody>
-									<tr >
+									<tr>
 										<td>Quality</td>
 										<td>{{item._source.properties.Quality | defaultToValue }} <span>+{{20-(item._source.properties.Quality)}}</span></td>
 									</tr>
@@ -268,7 +253,7 @@
 							<div class="item-stats float-left" ng-if="item._source.properties.Gem !== undefinded">
 								<table>
 									<thead>
-									<th><td></td><td></td></th>
+										<th><td></td><td></td></th>
 									</thead>
 									<tbody>
 									<tr>
@@ -289,14 +274,14 @@
 							<div class="item-stats float-left" ng-if="item._source.properties.Weapon">
 								<table>
 									<thead>
-									<th><td></td><td></td></th>
+										<th><td></td><td></td></th>
 									</thead>
 									<tbody>
 									<tr>
 										<td>Quality</td>
-										<td>{{item._source.properties.Quality | defaultToValue }}</td>
+										<td>{{item._source.properties.Quality | defaultToValue }} <span>+{{20-(item._source.properties.Quality)}}</span></td>
 									</tr>
-									<tr>
+									<tr >
 										<td>Gem Level</td>
 										<td>{{item._source.properties.Gem.Level}}</td>
 									</tr>
