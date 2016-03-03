@@ -122,6 +122,18 @@ gulp.task('copy:images', function (cb) {
 	cb();
 });
 
+// Copy Demo Build to production repo
+gulp.task('copy:build', function (cb) {
+	return;
+	if (!isDemo) return;
+	var destinationDemo = '../exiletrade/';
+	gulp.src('./demo/**/*')
+		.pipe(gulp.dest(destinationDemo))
+	;
+
+	cb();
+});
+
 // Compiles Sass
 gulp.task('sass', function () {
 	var minifyCss = $.if(isProduction, $.minifyCss());
