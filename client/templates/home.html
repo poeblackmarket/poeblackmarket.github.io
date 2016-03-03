@@ -101,6 +101,7 @@ url: /
 								</div>
 								<div ng-repeat="cssClasses in getSocketLinkClasses(item._source.sockets.allSockets)" class="socketLink {{cssClasses}}">
 								</div>
+								<span class="stackSize" ng-if="item._source.properties.stackSize">{{item._source.properties.stackSize.current}}</span>
 							</div>
 
 							<div class="grid-block item-info">
@@ -116,6 +117,30 @@ url: /
 									</div>
 
 									<div class="grid-block requirements">
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map.itemQuantity}}"
+											  data-value="{{item._source.properties.Map.itemQuantity}}"
+											  data-name="itemQuantity">
+											Item quantity: +{{item._source.properties.Map.itemQuantity}}
+											<i class="seperator"></i>
+										</span>
+
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map.itemRarity}}"
+											  data-value="{{item._source.properties.Map.itemRarity}}"
+											  data-name="itemQuantity">
+											Item rarity: +{{item._source.properties.Map.itemRarity}}
+											<i class="seperator"></i>
+										</span>
+
+										<span class="sortable"
+											  ng-if="{{item._source.properties.Map.mapTier}}"
+											  data-value="{{item._source.properties.Map.mapTier}}"
+											  data-name="mapTier">
+											Item rarity: +{{item._source.properties.Map.mapTier}}
+											<i class="seperator"></i>
+										</span>
+
 										<span class="sortable"
 											  ng-show="{{item._source.attributes.ilvl}}"
 											  data-value="{{item._source.attributes.ilvl}}"
@@ -163,6 +188,9 @@ url: /
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
 												data-mod="{{mod}}">
 												{{mod}}
+											</li>
+											<li ng-if="item._source.mods.Card">
+												{{item._source.mods.Card.DivinationReward}}
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
 										</ul>
