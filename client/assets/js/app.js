@@ -328,6 +328,7 @@ function escapeField(result) {
 					+ ' (Stash-Tab: "'+ stashTab + '" [x' + x + ',y' + y + '])'
 					+ ', my offer is : ';
 			}
+			console.log('Prepared Whisper Message: ' ,message);
 			return message;
         };
 

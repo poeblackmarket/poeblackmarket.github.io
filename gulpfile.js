@@ -16,8 +16,6 @@ var sequence = require('run-sequence');
 var isProduction = !!(argv.production);
 // Check for --demo flag
 var isDemo = !!(argv.demo);
-var destination = (isDemo ? './demo' : './build' );
-var destinationDemo = ('../exiletrade/');
 
 // 2. FILE PATHS
 // - - - - - - - - - - - - - - -
@@ -62,11 +60,13 @@ var paths = {
 
 // Cleans the build directory
 gulp.task('clean', function (cb) {
+	var destination = (isDemo ? './demo' : './build' );
 	rimraf(destination, cb);
 });
 
 // Copies everything in the client folder except templates, Sass, and JS
 gulp.task('copy', function () {
+	var destination = (isDemo ? './demo' : './build' );
 	return gulp.src(paths.assets, {
 		base: './client/'
 	})
@@ -76,6 +76,7 @@ gulp.task('copy', function () {
 
 // Copies your app's page templates and generates URLs for them
 gulp.task('copy:templates', function () {
+	var destination = (isDemo ? './demo' : './build' );
 	var routerPath = (isDemo ? 'demo' : 'build' );
 	return gulp.src('./client/templates/**/*.html')
 		.pipe(router({
@@ -88,6 +89,8 @@ gulp.task('copy:templates', function () {
 
 // Compiles the Foundation for Apps directive partials into a single JavaScript file
 gulp.task('copy:foundation', function (cb) {
+	var destination = (isDemo ? './demo' : './build' );
+
 	gulp.src('bower_components/foundation-apps/js/angular/components/**/*.html')
 		.pipe($.ngHtml2js({
 			prefix: 'components/',
@@ -119,21 +122,10 @@ gulp.task('copy:images', function (cb) {
 	cb();
 });
 
-// Copy Demo Build to production repo
-gulp.task('copy:build', function (cb) {
-	return;
-	if (!isDemo) return;
-
-	gulp.src('./demo/**/*')
-		.pipe(gulp.dest(destinationDemo))
-	;
-
-	cb();
-});
-
 // Compiles Sass
 gulp.task('sass', function () {
 	var minifyCss = $.if(isProduction, $.minifyCss());
+	var destination = (isDemo ? './demo' : './build' );
 
 	return gulp.src('client/assets/scss/app.scss')
 		.pipe($.sass({
@@ -153,6 +145,7 @@ gulp.task('sass', function () {
 gulp.task('uglify', ['uglify:foundation', 'uglify:app'])
 
 gulp.task('uglify:foundation', function (cb) {
+	var destination = (isDemo ? './demo' : './build' );
 	var uglify = $.if(isProduction, $.uglify()
 		.on('error', function (e) {
 			console.log(e);
@@ -166,6 +159,7 @@ gulp.task('uglify:foundation', function (cb) {
 });
 
 gulp.task('uglify:app', function () {
+	var destination = (isDemo ? './demo' : './build' );
 	var uglify = $.if(isProduction, $.uglify()
 		.on('error', function (e) {
 			console.log(e);
@@ -193,7 +187,7 @@ gulp.task('server', ['build'], function () {
 
 // Builds your entire app once, without starting a server
 gulp.task('build', function (cb) {
-	sequence('clean', ['copy', 'copy:foundation', 'sass', 'uglify'], 'copy:templates', 'copy:images', 'copy:build', cb);
+	sequence('clean', ['copy', 'copy:foundation', 'sass', 'uglify'], 'copy:templates', 'copy:images', cb);
 });
 
 // Default task: builds your app, starts a server, and recompiles assets when they change
