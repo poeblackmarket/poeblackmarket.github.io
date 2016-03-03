@@ -27,10 +27,10 @@ function parseSearchInputTokens(input) {
 	var tokens = input.split(" ");
 	var queryTokens = [];
 	for (i in tokens) {
-		var evaluatedToken = tokens[i];
-		var token = evaluatedToken.toLowerCase();
-		if (['or','and','not'].indexOf(token) != -1) {
-			evaluatedToken = evalSearchTerm(evaluatedToken);
+		var token = tokens[i].toUpperCase();
+		var evaluatedToken = token;
+		if ( token != "OR" && token != "AND" && token !="LST" && token !="NOT" ) {
+			evaluatedToken = evalSearchTerm(token);
 			if (evaluatedToken && hasBackTick(evaluatedToken)) {
 				evaluatedToken = parseSearchInputTokens(evaluatedToken);
 			}
