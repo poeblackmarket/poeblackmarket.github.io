@@ -205,6 +205,10 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 			doActualSearch(150, 'shop.updated', 'desc');
 		};
 
+		$scope.stateChanged = function() {
+			console.log('h');
+		};
+
 		/*
 			Runs the current searchInput with a custom sort
 		*/

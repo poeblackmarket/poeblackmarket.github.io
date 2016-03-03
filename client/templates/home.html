@@ -30,7 +30,7 @@ url: /
 					<span class="inline-label">
 						<div class="switch small">
 							<input type="checkbox" ng-model="switchItemsPerRow" id="switch-itemsPerRow"
-								   ng-true-value="" ng-false-value="">
+								   ng-true-value="" ng-false-value="" ng-change="stateChanged()">
 							<label for="switch-itemsPerRow"></label>
 						</div>
 
@@ -76,7 +76,7 @@ url: /
 	</div>
 
 	
-	<div class="grid-content search-results">
+	<div class="grid-content search-results" ">
 		<!--a href="#" zf-toggle="panelName" class="button">Show Search</a-->
 		
 		<ul>
@@ -86,7 +86,7 @@ url: /
 		</ul>
 		
 		<div class="grid-block search-items large-up-2">
-			<div class="grid-content item" ng-repeat="item in Response.hits.hits" ng-style="{width:itemsPerRow}"
+			<div class="grid-content item" ng-repeat="item in Response.hits.hits" ng-style=""
 				 data-id="{{item._id}}" data-md5sum="{{item._source.md5sum}}" data-uuid="{{item._source.uuid}}">
 
 				<div class="grid-block item-border">
