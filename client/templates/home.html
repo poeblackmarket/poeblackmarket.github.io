@@ -118,26 +118,26 @@ url: /
 
 									<div class="grid-block requirements">
 										<span class="sortable"
-											  ng-if="{{item._source.properties.Map.itemQuantity}}"
-											  data-value="{{item._source.properties.Map.itemQuantity}}"
-											  data-name="itemQuantity">
-											Item quantity: +{{item._source.properties.Map.itemQuantity}}
+											  ng-if="{{item._source.properties.Map['Map Tier']}}"
+											  data-value="{{item._source.properties.Map['Map Tier']}}"
+											  data-name="MapTier">
+											Item rarity: +{{item._source.properties.Map['Map Tier']}}
 											<i class="seperator"></i>
 										</span>
 
 										<span class="sortable"
-											  ng-if="{{item._source.properties.Map.itemRarity}}"
-											  data-value="{{item._source.properties.Map.itemRarity}}"
-											  data-name="itemQuantity">
-											Item rarity: +{{item._source.properties.Map.itemRarity}}
+											  ng-if="{{item._source.properties.Map['Item Quantity']}}"
+											  data-value="{{item._source.properties.Map['Item Quantity']}}"
+											  data-name="ItemQuantity">
+											Item quantity: +{{item._source.properties.Map['Item Quantity']}}
 											<i class="seperator"></i>
 										</span>
 
 										<span class="sortable"
-											  ng-if="{{item._source.properties.Map.mapTier}}"
-											  data-value="{{item._source.properties.Map.mapTier}}"
-											  data-name="mapTier">
-											Item rarity: +{{item._source.properties.Map.mapTier}}
+											  ng-if="{{item._source.properties.Map['Item Rarity']}}"
+											  data-value="{{item._source.properties.Map['Item Rarity']}}"
+											  data-name="ItemQuantity">
+											Item rarity: +{{item._source.properties.Map['Item Rarity']}}
 											<i class="seperator"></i>
 										</span>
 
@@ -261,6 +261,27 @@ url: /
 								</table>
 							</div>
 							<div class="item-stats float-left" ng-if="item._source.properties.Gem !== undefinded">
+								<table>
+									<thead>
+									<th><td></td><td></td></th>
+									</thead>
+									<tbody>
+									<tr>
+										<td>Quality</td>
+										<td>{{item._source.properties.Quality | defaultToValue }}</td>
+									</tr>
+									<tr>
+										<td>Gem Level</td>
+										<td>{{item._source.properties.Gem.Level}}</td>
+									</tr>
+									<tr>
+										<td>Gem Experience</td>
+										<td>{{item._source.properties.Gem.Experience.PercentLeveled}}%</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="item-stats float-left" ng-if="item._source.properties.Weapon">
 								<table>
 									<thead>
 									<th><td></td><td></td></th>
