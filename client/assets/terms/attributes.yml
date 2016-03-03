@@ -1,6 +1,6 @@
-;
-; Attributes
-;
+#
+# Attributes
+#
 rare|yellow:
  query: attributes.rarity:Rare
 normal|white|gr(a|e)y:
