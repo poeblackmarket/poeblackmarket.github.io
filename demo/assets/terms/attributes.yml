@@ -23,4 +23,14 @@ crafted:
 (\d+)glvl:
   query: properties.Gem.Level:$1
 (\d+)q(uality)?:
-  query: properties.Quality:$1
+  query: properties.Quality:$1  
+(\d+)iLe?ve?l:
+  query: attributes.ilvl:$1
+(\d+)rDex:
+  query: requirements.Dex:$1
+(\d+)rStr:
+  query: requirements.Str:$1
+(\d+)rInt:
+  query: requirements.Int:$1
+(\d+)rLe?ve?l:
+  query: requirements.Level:$1

@@ -196,6 +196,7 @@ function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
 		$http.get('assets/terms/currencies.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/leagues.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/seller.yml').then(mergeIntoTermsMap);
+		$http.get('assets/terms/mod-jewels.yml').then(mergeIntoTermsMap);
 
 		/*
 			Runs the current searchInput with default sort
