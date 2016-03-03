@@ -27,9 +27,9 @@ function parseSearchInputTokens(input) {
 	var tokens = input.split(" ");
 	var queryTokens = [];
 	for (i in tokens) {
-		var token = tokens[i];
+		var token = tokens[i].toUpperCase();
 		var evaluatedToken = token;
-		if ( token != "OR" && token != "AND" && token !="LST" ) {
+		if ( token != "OR" && token != "AND" && token !="LST" && token !="NOT" ) {
 			evaluatedToken = evalSearchTerm(token);
 			if (evaluatedToken && hasBackTick(evaluatedToken)) {
 				evaluatedToken = parseSearchInputTokens(evaluatedToken);
