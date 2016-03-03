@@ -6515,7 +6515,7 @@ ul {
   padding: 0.13333rem 0.5rem;
   background-color: #C22626; }
 
-.label.corrupted {
+.label.mirrored {
   padding: 0.13333rem 0.5rem;
   background-color: grey; }
 
@@ -6546,6 +6546,19 @@ img.gitter-badge {
 
 .highlight {
   background-color: rgba(0, 0, 0, 0.2); }
+
+.itemsPerRow {
+  -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%; }
+
+.absoluteNavBtn {
+  position: absolute;
+  top: 67px; }
+  .absoluteNavBtn.savedSearches {
+    right: 10px; }
+  .absoluteNavBtn.scrollTop {
+    right: 182px; }
 
 .search-results .item {
   min-width: 600px;
