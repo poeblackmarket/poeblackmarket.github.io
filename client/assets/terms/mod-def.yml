@@ -43,11 +43,11 @@ life:
   query: modsPseudo.+# Total to maximum Life:[$1 TO *]
 (\d+)-(\d+)life:
   query: modsPseudo.+# Total to maximum Life:[$1 TO $2]
-Tot(al)?res:
+(Total)?res:
   query: modsPseudo.+#% Total to Resistances:>0
-(\d+)Tot(al)?res:
+(\d+)(Total)?res:
   query: modsPseudo.+#% Total to Resistances:[$1 TO *]
-(\d+)-(\d+)Tot(al)?res:
+(\d+)-(\d+)(Total)?res:
   query: modsPseudo.+#% Total to Resistances:[$1 TO $2]
 str:
   query: modsPseudo.+# Total to Strength:>0
