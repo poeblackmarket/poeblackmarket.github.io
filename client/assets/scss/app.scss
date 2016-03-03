@@ -17,7 +17,7 @@ ul {
 	padding: 0.13333rem 0.5rem;
 	background-color: $bg_color_corrupted;
 }
-.label.corrupted {
+.label.mirrored {
 	padding: 0.13333rem 0.5rem;
 	background-color: grey;
 }
@@ -57,6 +57,9 @@ img.gitter-badge {
 
 .highlight {
 	background-color: rgba(0,0,0,.2);
+}
+.itemsPerRow {
+	flex: 0 0 100%;
 }
 
 .search-results {
