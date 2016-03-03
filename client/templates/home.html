@@ -158,6 +158,15 @@ url: /
 
 									<div class="grid-block mods">
 										<ul>
+											<li class="sortable" ng-repeat="mod in item._source.forgottenMods"
+												data-mod="{{mod}}">
+												<a href="#" ng-click="doSearchWithSort(mod.key)">{{mod.display}}</a>
+											</li>
+											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
+										</ul>
+									</div>
+									<!--div class="grid-block mods"> TODO, maybe toggle switch to show mods total?
+										<ul>
 											<li class="sortable" ng-repeat="mod in getItemMods(item._source.modsTotal)"
 												ng-class="{implicit: ($index+1) <= item._source.attributes.implicitModsCount,
 												firstExplicit: ($index) == item._source.attributes.implicitModsCount}"
@@ -166,7 +175,7 @@ url: /
 											</li>
 											<li class="unidentified" ng-if="item._source.attributes.identified==false">Unidentified</li>
 										</ul>
-									</div>
+									</div-->
 									<div class="grid-block modsPseudo">
 										<ul ng-show="switchPseudoMods==true" ng-if="!(item._source.modsPseudo | isEmpty)">
 											<li>[Pseudo Mods]</li>

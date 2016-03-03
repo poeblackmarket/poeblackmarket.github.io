@@ -90,6 +90,45 @@ function escapeField(result) {
 	return res;
 }
 
+function firstKey(obj) {
+	for(var key in obj) break;
+ 	// "key" is the first key here
+ 	return key;
+}
+
+function modToDisplay(value, mod) {
+	if( typeof value === 'number' ) {
+		mod = mod.replace('#', value);
+	} else if ( typeof value === "object" ) {
+		var valstr = value['min'] + '-' + value['max'] + ' (' + value['avg'] + ')';
+		mod = mod.replace('#-#', valstr);
+		value.has
+	} else if ( typeof value === "boolean" ) {
+		mod = mod;
+	} else {
+		console.error("Mod value is neither a number or an object, maybe ExileTools has a recent change? mod = " +
+			mod + ", value = " + value);
+	}
+	return mod;
+}
+
+function buildElasticJSONRequestBody(searchQuery, _size, sortKey, sortOrder) {
+	var sortObj = {}
+	sortObj[sortKey] = { "order": sortOrder };
+	var esBody = {
+					"sort": [ sortObj ],
+					"query": {
+						"query_string": { // TODO Is this it faster if we used filter-query instead of query?
+							"default_operator": "AND",
+							"query": searchQuery
+						}
+					},
+					size:_size
+				};
+	if(!searchQuery) delete esBody['query'];
+	return esBody;
+}
+
 (function() {
 	'use strict';
 
@@ -157,52 +196,62 @@ function escapeField(result) {
 		$http.get('assets/terms/currencies.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/leagues.yml').then(mergeIntoTermsMap);
 		$http.get('assets/terms/seller.yml').then(mergeIntoTermsMap);
-		
+
+		/*
+			Runs the current searchInput with default sort
+		*/		
 		$scope.doSearch = function() {
+			doActualSearch(150, 'shop.updated', 'desc');
+		};
+
+		/*
+			Runs the current searchInput with a custom sort
+		*/
+		$scope.doSearchWithSort = function(sortKey){
+			doActualSearch(150, sortKey, 'desc');
+		};
+
+		function doActualSearch(size, sortKey, sortOrder) {
 			$scope.Response = null;
 			var searchQuery = parseSearchInput($scope.termsMap, $scope.searchInput);
 			console.log("searchQuery=" + searchQuery);
 			$scope.queryString = searchQuery;
 
-			var esBody = {
-					"sort": [
-						{
-							"shop.updated": {
-								"order": "desc"
-							}
-						}
-					],
-					"query": {
-						"query_string": {
-							"default_operator": "AND",
-							"query": searchQuery
-						}
-					},
-					// Is this faster?
-					/*"query": {
-					 "filtered": {
-					 "query": {
-					 "query_string": {
-					 "query": $scope.searchInput
-					 }
-					 }
-					 }
-					 },*/
-					size:100
-				};
-			if(!searchQuery) delete esBody['query'];
+			var esBody = buildElasticJSONRequestBody(searchQuery, size, sortKey, sortOrder);
 			console.info("Final search json: " +  JSON.stringify(esBody));
 			
 			es.search({
 				index: 'index',
 				body: esBody
 			}).then(function (response) {
+				$.each(response.hits.hits, function( index, value ) {
+				  addCustomFields(value._source);
+				});
 				$scope.Response = response;
-				console.log(JSON.stringify($scope.Response));
+				// console.log(JSON.stringify($scope.Response));
 			}, function (err) {
 				console.trace(err.message);
 			});
-		};
+		}
+
+		/*
+			Add custom fields to the item object
+		*/
+		function addCustomFields(item) {
+			if (item.mods) item['forgottenMods'] = createForgottenMods(item);
+		}
+
+		function createForgottenMods(item) {
+			var itemTypeKey = firstKey(item.mods);
+			var explicits = item.mods[itemTypeKey].explicit;
+			var forgottenMods = $.map( explicits, function( propertyValue, modKey ) {
+			  return {
+			  	display : modToDisplay(propertyValue, modKey),
+			  	key : 'mods.' + itemTypeKey + '.explicit.' + modKey
+			  };
+			});
+			return forgottenMods;
+		}
 
 		/*
 			Save the current/last search terms to HTML storage
